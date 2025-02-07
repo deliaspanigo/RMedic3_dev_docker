@@ -1,0 +1,34 @@
+# Generar una nueva clave SSH
+ssh-keygen -t ed25519 -C "david.elias949@gmail.com" -f ~/.ssh/standard_shiny_full_02
+
+# Si tu sistema no soporta ed25519, puedes usar rsa
+# ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+# Iniciar el agente SSH
+eval "$(ssh-agent -s)"
+
+
+# Agregar tu clave privada al agente SSH
+ssh-add ~/.ssh/standard_shiny_full_02
+
+# Si usaste rsa
+# ssh-add ~/.ssh/id_rsa
+
+# Copiar la clave SSH al portapapeles
+cat ~/.ssh/standard_shiny_full_02.pub
+
+# Si usaste rsa
+# cat ~/.ssh/id_rsa.pub
+
+# Instrucciones para agregar la clave SSH a tu cuenta de GitHub:
+# 1. Ve a https://github.com
+# 2. En la esquina superior derecha, haz clic en tu foto de perfil y luego en Settings.
+# 3. En la barra lateral izquierda, haz clic en SSH and GPG keys.
+# 4. Haz clic en New SSH key.
+# 5. Pega tu clave pública en el campo "Key" y dale un título.
+# 6. Haz clic en Add SSH key.
+
+# Probar la conexión a GitHub
+ssh -T git@github.com
+
+
