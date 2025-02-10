@@ -1,5 +1,5 @@
 ## Segmento del UI
-BatallaNavalUI3 <- function(id) {
+modules_06_sobrevida_VarSelector_UI <- function(id) {
   ns <- NS(id)
   
   
@@ -11,9 +11,9 @@ BatallaNavalUI3 <- function(id) {
 
 
 ## Segmento del server
-BatallaNavalSERVER3 <- function(input, output, session, 
-                               base, zocalo_CIE, 
-                               verbatim) {
+modules_06_sobrevida_VarSelector_SERVER <- function(input, output, session, 
+                                base, zocalo_CIE, 
+                                verbatim) {
   
   ns <- session$ns
   
@@ -102,36 +102,36 @@ BatallaNavalSERVER3 <- function(input, output, session,
     lenguaje_tipo <- c()
     
     
-  
-      # Variables
-      variables[1] <- c(input$var1)
-      variables[2] <- c(input$var2)
-      
-      # Numero de tipo de variable
-      numero_tipo[1] <- 10 # RELLENADO!
-      numero_tipo[2] <- 10 # RELLENADO!
-      numero_tipo <- as.numeric(numero_tipo)
-      
-      # Tipo de variable
-      tipo_variables[numero_tipo ==  1] <- "Character"
-      tipo_variables[numero_tipo == 10] <- "Numeric"
-      
-      # Lenguage en tipo de variable
-      lenguaje_tipo[numero_tipo ==  1] <- "Categórica"
-      lenguaje_tipo[numero_tipo == 10] <- "Numérica"
-      
-      # Verificacion interna
-      dt_numerica1_interna <- is.numeric(base()[,input$var1])
-      dt_numerica1_externa <- tipo_variables[1] == "Numeric"
-      dt_numerica2_interna <- is.numeric(base()[,input$var2])
-      dt_numerica2_externa <- tipo_variables[2] == "Numeric"
-      
-      verificacion_interna[1] <- TRUE
-      verificacion_interna[2] <- TRUE
-      if(!dt_numerica1_interna) if(dt_numerica1_externa) verificacion_interna[1] <- FALSE
-      if(!dt_numerica2_interna) if(dt_numerica2_externa) verificacion_interna[2] <- FALSE
-      
-       
+    
+    # Variables
+    variables[1] <- c(input$var1)
+    variables[2] <- c(input$var2)
+    
+    # Numero de tipo de variable
+    numero_tipo[1] <- 10 # RELLENADO!
+    numero_tipo[2] <- 10 # RELLENADO!
+    numero_tipo <- as.numeric(numero_tipo)
+    
+    # Tipo de variable
+    tipo_variables[numero_tipo ==  1] <- "Character"
+    tipo_variables[numero_tipo == 10] <- "Numeric"
+    
+    # Lenguage en tipo de variable
+    lenguaje_tipo[numero_tipo ==  1] <- "Categórica"
+    lenguaje_tipo[numero_tipo == 10] <- "Numérica"
+    
+    # Verificacion interna
+    dt_numerica1_interna <- is.numeric(base()[,input$var1])
+    dt_numerica1_externa <- tipo_variables[1] == "Numeric"
+    dt_numerica2_interna <- is.numeric(base()[,input$var2])
+    dt_numerica2_externa <- tipo_variables[2] == "Numeric"
+    
+    verificacion_interna[1] <- TRUE
+    verificacion_interna[2] <- TRUE
+    if(!dt_numerica1_interna) if(dt_numerica1_externa) verificacion_interna[1] <- FALSE
+    if(!dt_numerica2_interna) if(dt_numerica2_externa) verificacion_interna[2] <- FALSE
+    
+    
     
     # Para todas las salidas posibles...
     # Determinamos pos_RMedic
@@ -179,9 +179,9 @@ BatallaNavalSERVER3 <- function(input, output, session,
   # Batalla Naval
   batalla_naval <- reactive({
     
-
+    
     if(is.null(user_selection())) return(NULL)
-
+    
     
     # Solo sigue si hay 2 variables en juego!
     
@@ -227,28 +227,28 @@ BatallaNavalSERVER3 <- function(input, output, session,
     
     
     
-  
-      
-      if(sum(colnames(base()) == input$var1) == 0) return(NULL)
-      
-      armado[[1]] <- paste0("<b>Tiempo (Variable 1): </b>", user_selection()[[1]][1], 
-                            " - Columna ", MyLetter(Base = base(), the_col = user_selection()[[1]][1]),
-                            " - ",  user_selection()$lenguaje_tipo[1])
-      
-      
-   
     
-
-      
-      if(sum(colnames(base()) == input$var2) == 0) return(NULL)
-      
-      armado[[1]] <- paste0(armado[[1]], "<br/>",
-                            "<b>Status (Variable 2): </b>", user_selection()[[1]][2], 
-                            " - Columna ", MyLetter(Base = base(), the_col = user_selection()[[1]][2]),
-                            " - ",  user_selection()$lenguaje_tipo[2])
-      
-      
- 
+    
+    if(sum(colnames(base()) == input$var1) == 0) return(NULL)
+    
+    armado[[1]] <- paste0("<b>Tiempo (Variable 1): </b>", user_selection()[[1]][1], 
+                          " - Columna ", MyLetter(Base = base(), the_col = user_selection()[[1]][1]),
+                          " - ",  user_selection()$lenguaje_tipo[1])
+    
+    
+    
+    
+    
+    
+    if(sum(colnames(base()) == input$var2) == 0) return(NULL)
+    
+    armado[[1]] <- paste0(armado[[1]], "<br/>",
+                          "<b>Status (Variable 2): </b>", user_selection()[[1]][2], 
+                          " - Columna ", MyLetter(Base = base(), the_col = user_selection()[[1]][2]),
+                          " - ",  user_selection()$lenguaje_tipo[2])
+    
+    
+    
     
     
     
@@ -342,8 +342,8 @@ BatallaNavalSERVER3 <- function(input, output, session,
     # Usamos solo la salida HTML
     paste0(
       div(
-        h3(names(zocalo())[1]),
-        zocalo()[[1]]
+        h3_mod(names(zocalo())[1]),
+        h4(zocalo()[[1]])
       )
     )
     
@@ -373,7 +373,7 @@ BatallaNavalSERVER3 <- function(input, output, session,
                                        "Albatético Decreciente" = 3)
                )
         ),
-       
+        
         column(3,
                numericInput(inputId = ns("decimales"),
                             label = "Decimales",
@@ -391,25 +391,28 @@ BatallaNavalSERVER3 <- function(input, output, session,
                             step = 0.01)
         )
       ),
+      br(),
+      fluidRow(
       column(4,
-           selectInput(inputId = ns("var1"),
-                       label = "Variable 1: ",
-                       choices = "")
-                       ),
+             selectInput(inputId = ns("var1"),
+                         label = "Variable 1: ",
+                         choices = "")
+      ),
       column(4,
-           selectInput(inputId = ns("var2"),
-                       label = "Variable 2: ",
-                       choices = "")
-                                          ),
-                   
-    fluidRow(span(htmlOutput(ns("message01")), style="color:red")),
-    fluidRow(span(htmlOutput(ns("message02")), style="color:red")),
-    fluidRow(span(htmlOutput(ns("message03")), style="color:red")),
-    
-    htmlOutput(ns("Zocalo")), br(), br(),
-    verbatimTextOutput(ns("MiTexto_BatallaNaval")),
+             selectInput(inputId = ns("var2"),
+                         label = "Variable 2: ",
+                         choices = "")
       )
-
+      ),
+      
+      fluidRow(span(htmlOutput(ns("message01")), style="color:red")),
+      fluidRow(span(htmlOutput(ns("message02")), style="color:red")),
+      fluidRow(span(htmlOutput(ns("message03")), style="color:red")),
+      br(),
+      htmlOutput(ns("Zocalo")), 
+      verbatimTextOutput(ns("MiTexto_BatallaNaval")),
+    )
+    
     
   })
   

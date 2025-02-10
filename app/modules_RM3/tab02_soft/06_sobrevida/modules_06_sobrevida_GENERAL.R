@@ -25,7 +25,7 @@ module_06_sobrevida_GENERAL_SERVER <-  function(input, output, session, base,
     
     
     # Sobrevida General
-    UserSelection <- callModule(module = BatallaNavalSERVER3, 
+    UserSelection <- callModule(module = modules_06_sobrevida_VarSelector_SERVER, 
                                 id =  "sobrevida01",
                                 base = base,
                                 zocalo_CIE = zocalo_CIE,
@@ -82,7 +82,7 @@ module_06_sobrevida_GENERAL_SERVER <-  function(input, output, session, base,
     
     
     
-    callModule(module = KM_SobrevidaGeneral_SERVER,
+    callModule(module = modules_06_sobrevida_KM_SobrevidaGeneral_SERVER,
                id =  "sobrevida03",
                minibase = minibase,
                decimales = decimales,
@@ -95,7 +95,7 @@ module_06_sobrevida_GENERAL_SERVER <-  function(input, output, session, base,
     
     # Sobrevida por grupos
     
-    var_grupo <- callModule(module = BatallaNavalSERVER4,
+    var_grupo <- callModule(module = modules_06_sobrevida_GroupSelector_SERVER,
                             id =  "sobrevidagrupo01",
                             OpcionesColumnas = OpcionesColumnas)
     
@@ -107,7 +107,7 @@ module_06_sobrevida_GENERAL_SERVER <-  function(input, output, session, base,
                             verbatim = FALSE)
     
     
-    callModule(module = KM_SobrevidaGrupos_SERVER,
+    callModule(module = modules_06_sobrevida_KM_SobrevidaGroup_SERVER,
                id =  "sobrevidagrupo03",
                minibase = minibase2,
                decimales = decimales,
@@ -128,16 +128,18 @@ module_06_sobrevida_GENERAL_SERVER <-  function(input, output, session, base,
       fluidRow(
         column(1),
         column(10,
-               h3("Menú para Sobrevida"),
-               BatallaNavalUI(ns("sobrevida01")),
+               h3_mod("Menú para Sobrevida"),
+               modules_06_sobrevida_VarSelector_UI(ns("sobrevida01")),
                MiniBaseUI(ns("sobrevida02")),
+               hr_mod(),
+               br(),
                div(
                  tabsetPanel(
                    tabPanel("Sobrevida General", 
-                            KM_SobrevidaGeneral_UI(ns("sobrevida03"))),
+                            modules_06_sobrevida_KM_SobrevidaGeneral_UI(ns("sobrevida03"))),
                    tabPanel("Sobrevida por Grupos",
-                            BatallaNavalUI4(ns("sobrevidagrupo01")),
-                            KM_SobrevidaGrupos_UI(ns("sobrevidagrupo03")),
+                            modules_06_sobrevida_GroupSelector_UI(ns("sobrevidagrupo01")),
+                            modules_06_sobrevida_KM_SobrevidaGroup_UI(ns("sobrevidagrupo03")),
                             br(), br(), br(), br(), br()
                    )
                  )
@@ -154,59 +156,6 @@ module_06_sobrevida_GENERAL_SERVER <-  function(input, output, session, base,
     
     
     
-    # menuSOBREVIDA <- reactive({
-    #   
-    #   # Si no hay orden de salir a la cancha... Nadie sale...
-    #   if(is.null(RMedic_general())) return(NULL)
-    #   if(!RMedic_general()) return(NULL)
-    #   
-    #   # Si no hay status de BaseSalida(), nos vamos...
-    #   if(is.null(status_BaseSalida())) return(NULL)
-    #   if(!status_BaseSalida()) return(NULL)
-    #   
-    #   
-    #   tabs <- list()
-    #   
-    #   
-    #   tabs[[1]] <-  tabPanel(
-    #     title = "Sobrevida", 
-    #     # icon = icon("user-md"), 
-    #     value = 3,
-    #     fluidRow(
-    #       column(1),
-    #       column(10,
-    #              h3("Menú para Sobrevida"),
-    #              BatallaNavalUI(ns("sobrevida01")),
-    #              MiniBaseUI(ns("sobrevida02")),
-    #              div(
-    #                tabsetPanel(
-    #                  tabPanel("Sobrevida General", 
-    #                           KM_SobrevidaGeneral_UI(ns("sobrevida03"))),
-    #                  tabPanel("Sobrevida por Grupos",
-    #                           BatallaNavalUI4(ns("sobrevidagrupo01")),
-    #                           KM_SobrevidaGrupos_UI(ns("sobrevidagrupo03")),
-    #                           br(), br(), br(), br(), br()
-    #                )
-    #              )
-    #                   
-    #              
-    #             
-    #       )
-    #       ),
-    #       column(1)
-    #     )
-    #     
-    #   ) # End TabPanel
-    #   
-    #   
-    #   
-    #   tabs
-    #   
-    # })
-    # 
-    # 
-    # #Return del Modulo
-    # return(menuSOBREVIDA)
-    
+   
   })
 }

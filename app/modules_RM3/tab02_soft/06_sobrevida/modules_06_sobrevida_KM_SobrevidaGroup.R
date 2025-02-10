@@ -1,7 +1,7 @@
 
 
 
-KM_SobrevidaGrupos_UI <- function(id) {
+modules_06_sobrevida_KM_SobrevidaGroup_UI <- function(id) {
   
   ns <- NS(id)
   
@@ -21,11 +21,11 @@ KM_SobrevidaGrupos_UI <- function(id) {
 
 
 ## Segmento del server
-KM_SobrevidaGrupos_SERVER <- function(input, output, session, 
-                                       minibase, 
-                                       decimales,
-                                       alfa,
-                                       control_ejecucion) {
+modules_06_sobrevida_KM_SobrevidaGroup_SERVER <- function(input, output, session, 
+                                      minibase, 
+                                      decimales,
+                                      alfa,
+                                      control_ejecucion) {
   
   
   
@@ -160,8 +160,8 @@ KM_SobrevidaGrupos_SERVER <- function(input, output, session,
   
   
   # # output$averaver <- renderTable(minibase())
-
-
+  
+  
   output$tablaKM_Grupos <- renderTable(rownames = FALSE, align = "c",{
     
     if(!control_interno01()) return(NULL)
@@ -223,7 +223,7 @@ KM_SobrevidaGrupos_SERVER <- function(input, output, session,
     if(!control_interno01()) return(NULL)
     
     div(
-     #tableOutput(ns("averaver")),
+      #tableOutput(ns("averaver")),
       #br(), br(),
       h2("Tabla Resumen de Sobrevida por Grupos de Kaplan-Meier"),
       tableOutput(ns("tablaKM_Grupos")), br(), br(),

@@ -47,3 +47,8 @@ h1_mod <- function(text){
 }
 
 
+# Función para crear una línea horizontal personalizada
+hr_mod <- function(color = "#000000", grosor = "3px") {
+  tags$hr(style = paste("border-top:", grosor, "solid", color, ";"))
+}
+

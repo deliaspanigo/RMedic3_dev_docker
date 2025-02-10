@@ -104,10 +104,10 @@ source("modules_01_03_RM_01_side/SideBarBase.R")
 
 
 source("modules/SideBarBase.R")
-source("modules/BatallaNaval.R")
-source("modules/BatallaNaval2.R")
-source("modules/BatallaNaval3.R")
-source("modules/BatallaNaval4.R")
+#source("modules/BatallaNaval.R")
+#source("modules/BatallaNaval2.R")
+#source("modules/BatallaNaval3.R")
+#source("modules/BatallaNaval4.R")
 source("modules/MiniBase.R")
 source("modules/MiniBase2.R")
 
@@ -213,8 +213,8 @@ source("modules/HoQC_10_TestNormalidadShapiroWilkParticionado.R")
 source("modules/HoQC_11_TestRegLogSimple.R")
 
 # KaplanMeier
-source("modules/KM_SobrevidaGeneral.R")
-source("modules/KM_SobrevidaGrupos.R")
+#source("modules/KM_SobrevidaGeneral.R")
+#source("modules/KM_SobrevidaGrupos.R")
 
 source("modules2/ModuleBase.R")
 #source("modules2/ModuleControl.R")

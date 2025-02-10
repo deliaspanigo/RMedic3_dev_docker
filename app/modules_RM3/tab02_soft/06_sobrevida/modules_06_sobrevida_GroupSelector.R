@@ -1,5 +1,5 @@
 ## Segmento del UI
-BatallaNavalUI4 <- function(id) {
+modules_06_sobrevida_GroupSelector_UI <- function(id) {
   ns <- NS(id)
   
   
@@ -11,14 +11,14 @@ BatallaNavalUI4 <- function(id) {
 
 
 ## Segmento del server
-BatallaNavalSERVER4 <- function(input, output, session,
+modules_06_sobrevida_GroupSelector_SERVER <- function(input, output, session,
                                 batalla_naval,
                                 OpcionesColumnas) {
   
   ns <- session$ns
   
   
- # observe(cat("AVer2","\n", OpcionesColumnas(), "\n"))
+  # observe(cat("AVer2","\n", OpcionesColumnas(), "\n"))
   if(is.null(OpcionesColumnas)) return(NULL)
   
   # return(
@@ -32,26 +32,26 @@ BatallaNavalSERVER4 <- function(input, output, session,
   
   
   
- 
-  
- 
   
   
   
- 
+  
+  
+  
+  
   
   output$ARMADO_BATALLON2 <- renderUI({
     
     if(is.null(OpcionesColumnas())) return(NULL)
     div(
       fluidRow(
-      column(4,
-             selectInput(inputId = ns("var3"),
-                         label = "Grupo (Variable 3): ",
-                         choices = c("Seleccione una... " = "", OpcionesColumnas()
-      )
-    )
-      )
+        column(4,
+               selectInput(inputId = ns("var3"),
+                           label = "Grupo (Variable 3): ",
+                           choices = c("Seleccione una... " = "", OpcionesColumnas()
+                           )
+               )
+        )
       )
     )
     
@@ -68,9 +68,9 @@ BatallaNavalSERVER4 <- function(input, output, session,
     # Returno exitoso
     return(input$var3)
     
-    })
+  })
   
- 
+  
   
   
   # Final Return of the Modul!

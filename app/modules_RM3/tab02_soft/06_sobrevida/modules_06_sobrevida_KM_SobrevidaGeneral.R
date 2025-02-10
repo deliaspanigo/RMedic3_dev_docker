@@ -1,7 +1,7 @@
 
 
 
-KM_SobrevidaGeneral_UI <- function(id) {
+modules_06_sobrevida_KM_SobrevidaGeneral_UI <- function(id) {
   
   ns <- NS(id)
   
@@ -20,7 +20,7 @@ KM_SobrevidaGeneral_UI <- function(id) {
 
 
 ## Segmento del server
-KM_SobrevidaGeneral_SERVER <- function(input, output, session, 
+modules_06_sobrevida_KM_SobrevidaGeneral_SERVER <- function(input, output, session, 
                                        minibase, 
                                        decimales,
                                        alfa,
@@ -31,7 +31,7 @@ KM_SobrevidaGeneral_SERVER <- function(input, output, session,
   # NameSpaceasing for the session
   ns <- session$ns
   
- 
+  
   
   control_internoKM1 <- reactive({
     
@@ -42,8 +42,8 @@ KM_SobrevidaGeneral_SERVER <- function(input, output, session,
     if(!is.null(minibase())){
       if(ncol(minibase()) > 0) {
         if(nrow(minibase()) > 0) {
-      
-     
+          
+          
           control_KM1(base = minibase())
           
         }
@@ -52,23 +52,23 @@ KM_SobrevidaGeneral_SERVER <- function(input, output, session,
     
     
   })
-    
+  
   
   # Control interno 01
   control_interno01 <- reactive({
     
-
+    
     if(is.null(control_ejecucion())) return(FALSE)
     if(is.null(control_internoKM1())) return(FALSE) 
-
+    
     ambos <- c(control_ejecucion(), control_internoKM1()[[1]])
     
     if(sum(ambos) == 2) return(TRUE) else return(FALSE)
-
+    
   })
   
- 
-
+  
+  
   
   
   # Salida de colores
@@ -186,11 +186,11 @@ KM_SobrevidaGeneral_SERVER <- function(input, output, session,
                # Color
                uiOutput(ns("MODcolor_KM_general"))
                
-             
-               )
+               
+        )
       )
       
-     
+      
     )
   })
   

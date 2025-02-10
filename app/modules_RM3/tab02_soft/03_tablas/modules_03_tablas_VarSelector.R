@@ -158,44 +158,7 @@ module_03_tablas_VarSelector_SERVER <- function(input, output, session,
   #################################
   
   
-  # observe({
-  #   if(!is.null(base())) {
-  #     if(!is.null(input$qtty_var)) {
-  #       if(input$qtty_var == 2) {
-  #         if(!is.null(input$tipo_var1)){
-  #           if(!is.null(input$tipo_var2)){
-  #             if(input$tipo_var1 != "") {
-  #               if(input$tipo_var2 != "") {
-  #                 
-  #                 
-  #                 if(input$tipo_var1 == input$tipo_var2){
-  #                   
-  #                   
-  #                   armado <- c(F, T)
-  #                   names(armado) <- c(input$var1, input$var2)
-  #                   
-  #                   if(input$tipo_var1 == 1) rotulo <- "En filas: " else
-  #                     if(input$tipo_var1 == 10) rotulo <- "En el eje X: " else
-  #                       
-  #                       freezeReactiveValue(input, "flip")
-  #                   updateSelectInput(session,
-  #                                     inputId = "flip",
-  #                                     label = rotulo,
-  #                                     choices = armado,
-  #                                     selected = armado[1])
-  #                   
-  #                   
-  #                 }
-  #                 
-  #                 
-  #               }
-  #             }
-  #           }
-  #         }
-  #       }
-  #     }
-  #   }
-  
+
   
   
   
@@ -394,24 +357,7 @@ module_03_tablas_VarSelector_SERVER <- function(input, output, session,
     
     
     
-    # Flip!
-    # Esto es para cuando las dos variables son cuantitativas
-    # o las dos son cualitativas
-    
-    # if(tipo_variables[1] == tipo_variables[2]) {
-    #   if(is.null(input$flip)) return(NULL)
-    #   if(input$flip == '') return(NULL)
-    #   
-    #   if(input$flip) {
-    #     variables <- variables[c(2,1)]
-    #     numero_tipo <- numero_tipo[c(2,1)]
-    #     tipo_variables <- tipo_variables[c(2,1)]
-    #     verificacion_interna <- verificacion_interna[c(2,1)]
-    #     lenguaje_tipo <- lenguaje_tipo[c(2,1)]
-    #   }
-    # }
-    
-    
+
     
     
     # Return Exitoso
@@ -655,27 +601,7 @@ module_03_tablas_VarSelector_SERVER <- function(input, output, session,
                        fluidRow(span(htmlOutput(ns("message01")), style="color:red")),
                        fluidRow(span(htmlOutput(ns("message02")), style="color:red")),
                        fluidRow(span(htmlOutput(ns("message03")), style="color:red")),
-                       # fluidRow(
-                       #   conditionalPanel(condition = "input.qtty_var>= 2", ns = ns,
-                       #                    conditionalPanel(condition = "input.var1 != ''", ns = ns,
-                       #                                     conditionalPanel(condition = "input.var2 != ''", ns = ns,                 
-                       #                                                      conditionalPanel(condition = "input.tipo_var1 != ''", ns = ns,
-                       #                                                                       conditionalPanel(condition = "input.tipo_var1 == input.tipo_var2", ns = ns,
-                       #                                                                                        fluidRow(
-                       #                                                                                          column(4,
-                       #                                                                                                 selectInput(inputId = ns("flip"),
-                       #                                                                                                             label = "my Flip",
-                       #                                                                                                             choices = "",
-                       #                                                                                                             selected = "")
-                       #                                                                                          )
-                       #                                                                                        )
-                       #                                                                       )
-                       #                                                      )
-                       #                                     )
-                       #                    )
-                       #   )
-                       # ),
-                       htmlOutput(ns("Zocalo")), br(), br(),
+                       htmlOutput(ns("Zocalo")), 
                        verbatimTextOutput(ns("MiTexto_BatallaNaval")),
       )
     )

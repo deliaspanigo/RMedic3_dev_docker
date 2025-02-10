@@ -1,5 +1,5 @@
 ## Segmento del UI
-BatallaNavalUI2 <- function(id) {
+modules_05_ho_VarSelector_UI <- function(id) {
   ns <- NS(id)
   
   
@@ -11,9 +11,9 @@ BatallaNavalUI2 <- function(id) {
 
 
 ## Segmento del server
-BatallaNavalSERVER2 <- function(input, output, session, 
-                               base, zocalo_CIE, 
-                               verbatim) {
+modules_05_ho_VarSelector_SERVER <- function(input, output, session, 
+                                base, zocalo_CIE, 
+                                verbatim) {
   
   ns <- session$ns
   
@@ -572,10 +572,17 @@ BatallaNavalSERVER2 <- function(input, output, session,
     # Usamos solo la salida HTML
     paste0(
       div(
-        h3(names(zocalo())[1]),
-        zocalo()[[1]]
+        h3_mod(names(zocalo())[1]), 
+        h4(zocalo()[[1]])
       )
     )
+    
+    # paste0(
+    # div(
+    #   h3(names(zocalo())[1]),
+    #   zocalo()[[1]]
+    # )
+    # )
     
   }) 
   
@@ -626,6 +633,7 @@ BatallaNavalSERVER2 <- function(input, output, session,
                             step = 0.01)
         )
       ),
+      br(),
       conditionalPanel(condition = "input.qtty_var != ''", ns = ns,
                        fluidRow(
                          conditionalPanel(condition = "input.qtty_var >= 1", ns = ns,
@@ -682,7 +690,8 @@ BatallaNavalSERVER2 <- function(input, output, session,
                                           )
                          )
                        ),
-                       htmlOutput(ns("Zocalo")), br(), br(),
+                       br(),
+                       htmlOutput(ns("Zocalo")), 
                        verbatimTextOutput(ns("MiTexto_BatallaNaval")),
       )
     )

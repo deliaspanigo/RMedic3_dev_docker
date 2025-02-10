@@ -23,7 +23,7 @@ module_05_ho_GENERAL_SERVER <-  function(input, output, session, base,
     ns <- session$ns
     
     
-    UserSelection <- callModule(module = BatallaNavalSERVER2, 
+    UserSelection <- callModule(module = modules_05_ho_VarSelector_SERVER, 
                                 id =  "var_selection_graficos",
                                 base = base,
                                 zocalo_CIE = zocalo_CIE,
@@ -203,9 +203,10 @@ module_05_ho_GENERAL_SERVER <-  function(input, output, session, base,
       fluidRow(
         column(1),
         column(10,
-               h3("Menú para Prueba de Hipótesis"),
-               BatallaNavalUI2(ns("var_selection_graficos")),
+               h3_mod("Menú para Prueba de Hipótesis"),
+               modules_05_ho_VarSelector_UI(ns("var_selection_graficos")),
                MiniBaseUI(ns("minibase_ho")),
+               hr_mod(),
                Ho1Q_UI(ns("ho1")),
                Ho1C_UI(ns("ho2")),
                Ho2Q_UI(ns("ho3")),

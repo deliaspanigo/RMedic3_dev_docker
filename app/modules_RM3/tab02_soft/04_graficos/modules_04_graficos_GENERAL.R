@@ -25,7 +25,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
     ns <- session$ns
     
     
-    UserSelection <- callModule(module = BatallaNavalSERVER, 
+    UserSelection <- callModule(module = module_04_graficos_VarSelector_SERVER, 
                                 id =  "var_selection_graficos",
                                 base = base,
                                 zocalo_CIE = zocalo_CIE,
@@ -37,10 +37,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
     
     selected_vars <- reactive({batalla_naval()[[1]]})
     
-    # observe(cat("casoRMedic()1: ", casoRMedic(), "\n"))
-    
-    
-    
+
     MiniBase <- callModule(module = MiniBaseSERVER, id =  "minibase_tablas",
                            base = base,
                            batalla_naval = UserSelection$batalla_naval,
@@ -48,11 +45,6 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
     
     
     
-    # my_case <- reactive({
-    #   
-    #   UserSelection$batalla_naval()$caso_tipo_variables
-    #   
-    # })
     casoRMedic <- reactive({
       
       if(is.null(batalla_naval())) return(NULL)
@@ -74,38 +66,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
       "5" = "GraficosQC_SERVER"
     )
     
-#     observeEvent(list(casoRMedic(), batalla_naval()),{
-#       req(casoRMedic())
-#       
-#         selected_module_name <- graficos_server_modules[[casoRMedic()]]
-#         req(selected_module_name)
-#       
-#       
-# #      if(casoRMedic() == 1){
-#         callModule(module = Graficos1Q_SERVER, 
-#                    id =  paste0("graficos", casoRMedic()),
-#                    minibase = MiniBase,
-#                    casoRMedic = casoRMedic,
-#                    caso = 1,
-#                    decimales = decimales,
-#                    batalla_naval = batalla_naval)
-# #      }
-#     })
-    
-    # observeEvent(list(MiniBase, casoRMedic(), batalla_naval()), {
-    #   req(base(), UserSelection, casoRMedic(), batalla_naval())
-    # 
-    # 
-    #   callModule(module = get(selected_module_name),
-    #              id = paste0("graficos", casoRMedic()),
-    #              minibase = MiniBase,
-    #              casoRMedic = casoRMedic,
-    #              caso = casoRMedic(), #1,
-    #              decimales = decimales,
-    #              batalla_naval = batalla_naval)
-    # 
-    # })
-    
+
     
     # Caso 1: 1Q    
     observeEvent(list(casoRMedic(), batalla_naval()),{
@@ -267,9 +228,9 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
       fluidRow(
         column(1),
         column(10,
-               h3("Menú para Gráficos"),
-               BatallaNavalUI(ns("var_selection_graficos")),
-               MiniBaseUI(ns("minibase_graficos")),
+               h3_mod("Menú para Gráficos"),
+               module_04_graficos_VarSelector_UI(ns("var_selection_graficos")),
+               hr_mod(),
                Graficos1Q_UI(ns("graficos1")),
                Graficos1C_UI(ns("graficos2")),
                Graficos2Q_UI(ns("graficos3")),

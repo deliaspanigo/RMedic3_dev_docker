@@ -655,27 +655,7 @@ module_02_control_VarSelector_SERVER <- function(input, output, session,
                        fluidRow(span(htmlOutput(ns("message01")), style="color:red")),
                        fluidRow(span(htmlOutput(ns("message02")), style="color:red")),
                        fluidRow(span(htmlOutput(ns("message03")), style="color:red")),
-                       # fluidRow(
-                       #   conditionalPanel(condition = "input.qtty_var>= 2", ns = ns,
-                       #                    conditionalPanel(condition = "input.var1 != ''", ns = ns,
-                       #                                     conditionalPanel(condition = "input.var2 != ''", ns = ns,                 
-                       #                                                      conditionalPanel(condition = "input.tipo_var1 != ''", ns = ns,
-                       #                                                                       conditionalPanel(condition = "input.tipo_var1 == input.tipo_var2", ns = ns,
-                       #                                                                                        fluidRow(
-                       #                                                                                          column(4,
-                       #                                                                                                 selectInput(inputId = ns("flip"),
-                       #                                                                                                             label = "my Flip",
-                       #                                                                                                             choices = "",
-                       #                                                                                                             selected = "")
-                       #                                                                                          )
-                       #                                                                                        )
-                       #                                                                       )
-                       #                                                      )
-                       #                                     )
-                       #                    )
-                       #   )
-                       # ),
-                       htmlOutput(ns("Zocalo")), br(), br(),
+                       htmlOutput(ns("Zocalo")), 
                        verbatimTextOutput(ns("MiTexto_BatallaNaval")),
       )
     )
