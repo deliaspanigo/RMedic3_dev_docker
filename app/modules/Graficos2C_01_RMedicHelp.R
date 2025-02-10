@@ -21,7 +21,7 @@ Graficos2C_01_RMedicHelp_UI <- function(id) {
     column(8,
            conditionalPanel(condition = "input.help_graficos_2c == 1", 
                             div(
-                              h3("RMedic Here!"),
+                              h3_mod("RMedic Here!"),
                               HTML(
                                 "Los gráficos más utilizados aplicados a una variable numérica son:<br/>
                       - Gráfico de <b>Media y Desvío Estándard</b>.<br/>

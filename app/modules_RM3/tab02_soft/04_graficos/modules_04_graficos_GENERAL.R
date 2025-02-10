@@ -57,14 +57,14 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
       
     })
     
-    # Modules Soft - Tabs mapping
-    graficos_server_modules <- list(
-      "1" = "Graficos1Q_SERVER",
-      "2" = "Graficos1C_SERVER",
-      "3" = "Graficos2Q_SERVER",
-      "4" = "Graficos1C_SERVER",
-      "5" = "GraficosQC_SERVER"
-    )
+    # # Modules Soft - Tabs mapping
+    # graficos_server_modules <- list(
+    #   "1" = "Graficos1Q_SERVER",
+    #   "2" = "Graficos1C_SERVER",
+    #   "3" = "Graficos2Q_SERVER",
+    #   "4" = "Graficos1C_SERVER",
+    #   "5" = "GraficosQC_SERVER"
+    # )
     
 
     
@@ -72,7 +72,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
     observeEvent(list(casoRMedic(), batalla_naval()),{
       req(casoRMedic())
       if(casoRMedic() == 1){
-        callModule(module = Graficos1Q_SERVER, id =  "graficos1",
+        callModule(module = modules_04_graficos_Graficos1Q_SERVER, id =  "graficos1",
                    minibase = MiniBase,
                    casoRMedic = casoRMedic,
                    caso = 1,
@@ -87,7 +87,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
       req(casoRMedic())
       if(casoRMedic() == 2){
         
-        callModule(module = Graficos1C_SERVER, id =  "graficos2",
+        callModule(module = modules_04_graficos_Graficos1C_SERVER, id =  "graficos2",
                    minibase = MiniBase,
                    casoRMedic = casoRMedic,
                    caso = 2,
@@ -102,7 +102,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
       req(casoRMedic())
       if(casoRMedic() == 3){
         
-        callModule(module = Graficos2Q_SERVER, id =  "graficos3",
+        callModule(module = modules_04_graficos_Graficos2Q_, id =  "graficos3",
                    minibase = MiniBase,
                    casoRMedic = casoRMedic,
                    caso = 3,
@@ -120,7 +120,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
         
 
 
-        callModule(module = Graficos2C_SERVER, id =  "graficos4",
+        callModule(module = modules_04_graficos_Graficos2C_SERVER, id =  "graficos4",
                    minibase = MiniBase,
                    casoRMedic = casoRMedic,
                    caso = 4,
@@ -139,7 +139,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
         
       
 
-          callModule(module = GraficosQC_SERVER, id =  "graficos5",
+          callModule(module = modules_04_graficos_GraficosQC_SERVER, id =  "graficos5",
                      minibase = MiniBase,
                      casoRMedic = casoRMedic,
                      caso = 5,
@@ -231,11 +231,12 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
                h3_mod("Menú para Gráficos"),
                module_04_graficos_VarSelector_UI(ns("var_selection_graficos")),
                hr_mod(),
-               Graficos1Q_UI(ns("graficos1")),
-               Graficos1C_UI(ns("graficos2")),
-               Graficos2Q_UI(ns("graficos3")),
-               Graficos2C_UI(ns("graficos4")),
-               GraficosQC_UI(ns("graficos5")),
+               br(),
+               modules_04_graficos_Graficos1Q_UI(ns("graficos1")),
+               modules_04_graficos_Graficos1C_UI(ns("graficos2")),
+               modules_04_graficos_Graficos2Q_UI(ns("graficos3")),
+               modules_04_graficos_Graficos2C_UI(ns("graficos4")),
+               modules_04_graficos_GraficosQC_UI(ns("graficos5")),
                br(), br(), br(), br(), br(),
                modules_03_tablas_Tablas1Q_UI(ns("tablas_plot1")),
                modules_03_tablas_Tablas1C_UI(ns("tablas_plot2")),
@@ -250,56 +251,7 @@ module_04_graficos_GENERAL_SERVER <-  function(input, output, session, base,
       
     })
     
-    # menuGRAFICOS <- reactive({
-    #   
-    #   # Si no hay orden de salir a la cancha... Nadie sale...
-    #   if(is.null(RMedic_general())) return(NULL)
-    #   if(!RMedic_general()) return(NULL)
-    #   
-    #   # Si no hay status de BaseSalida(), nos vamos...
-    #   if(is.null(status_BaseSalida())) return(NULL)
-    #   if(!status_BaseSalida()) return(NULL)
-    #   
-    #   
-    #   tabs <- list()
-    #   
-    #   
-    #   tabs[[1]] <-  tabPanel(
-    #     title = "Gráficos", 
-    #     # icon = icon("user-md"), 
-    #     value = 4,
-    #     fluidRow(
-    #       column(1),
-    #       column(10,
-    #              h3("Menú para Gráficos"),
-    #               BatallaNavalUI(ns("graficos01")),
-    #                 MiniBaseUI(ns("graficos02")),
-    #                   Graficos1Q_UI(ns("graficos03")),
-    #                   Graficos1C_UI(ns("graficos04")),
-    #                   Graficos2Q_UI(ns("graficos05")),
-    #                   Graficos2C_UI(ns("graficos06")),
-    #                   GraficosQC_UI(ns("graficos07")),
-    #              br(), br(), br(), br(), br(),
-    #                   Tablas1Q_UI(ns("graficos08")),
-    #                   Tablas1C_UI(ns("graficos09")),
-    #                   Tablas2Q_UI(ns("graficos10")),
-    #                   Tablas2C_UI(ns("graficos11")),
-    #                   TablasQC_UI(ns("graficos12"))
-    #       ),
-    #       column(1)
-    #     )
-    #     
-    #   ) # End TabPanel
-    #   
-    #   
-    #   
-    #   tabs
-    #   
-    # })
-    # 
-    # 
-    # #Return del Modulo
-    # return(menuGRAFICOS)
+   
     
   })
 }

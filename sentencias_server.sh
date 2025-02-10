@@ -2,7 +2,7 @@
 #!/bin/bash
 # Remove the 'app' directory if it exists
 if [ -d "app" ]; then
-    rm -rf app
+    rm -rf RMedic3_dev_docker
 fi
 
 docker pull legion949/dk_rmedic3_dev_img:latest

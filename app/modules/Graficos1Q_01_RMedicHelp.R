@@ -21,7 +21,7 @@ Graficos1Q_01_RMedicHelp_UI <- function(id) {
            br(),
            conditionalPanel(condition = "input.help_graficos_1q == 1",
                             div(
-                              h3("RMedic Here!"),
+                              h3_mod("RMedic Here!"),
                               HTML(
                                 "Los gráficos más utilizados aplicados a una variable categórica son:<br/>
                       - Gráfico de <b>Barras</b>.<br/>
