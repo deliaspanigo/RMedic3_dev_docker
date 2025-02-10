@@ -100,7 +100,7 @@ modules_03_tablas_Tablas1Q_SERVER <- function(input, output, session,
     
     # Si es el caso 1, seguimos!
     div(
-      h2("RMedic - Tablas para 1 Variable Categórica"),
+      h2_mod("RMedic - Tablas para 1 Variable Categórica"),
       tabsetPanel(id = ns("Tablas_1q"),
                   tabPanel(title = "RMedic Help!", value = 1,
                            fluidRow(
@@ -116,7 +116,7 @@ modules_03_tablas_Tablas1Q_SERVER <- function(input, output, session,
                                     br(),
                                     conditionalPanel(condition = "input.help_tablas_1q == 1",
                                                      div(
-                                                       h3("RMedic Here!"),
+                                                       h3_mod("RMedic Here!"),
                                                        HTML(
                                                          "Las tablas más utilizadas aplicadas a una variable categórica son:<br/>
                       - Tablas de <b>'Distribución de Frecuencias'</b>.<br/>
@@ -163,17 +163,17 @@ modules_03_tablas_Tablas1Q_SERVER <- function(input, output, session,
                            )
                   ),
                   tabPanel(title = "Distribución de Frecuencias", value = 2,
-                           h3(textOutput(ns("Salida_texto_1q_RMedic_01"))),
+                           h3_mod(textOutput(ns("Salida_texto_1q_RMedic_01"))),
                            tableOutput(ns("Salida_tabla_1q_RMedic_01")),
                            br()),
                   tabPanel(title = "Intervalos de Confianza", value = 3,
-                           h3(textOutput(ns("Salida_texto_1q_RMedic_02"))),
+                           h3_mod(textOutput(ns("Salida_texto_1q_RMedic_02"))),
                            tableOutput(ns("Salida_tabla_1q_RMedic_02")),
                            br(),
-                           h3(textOutput(ns("Salida_texto_1q_RMedic_03"))),
+                           h3_mod(textOutput(ns("Salida_texto_1q_RMedic_03"))),
                            tableOutput(ns("Salida_tabla_1q_RMedic_03")),
                            br(),
-                           h3(textOutput(ns("Salida_texto_1q_RMedic_04"))),
+                           h3_mod(textOutput(ns("Salida_texto_1q_RMedic_04"))),
                            tableOutput(ns("Salida_tabla_1q_RMedic_04")),
                            br())
       ),
