@@ -4321,8 +4321,8 @@ control_qc_RMedic <- function(base = NULL, columna = NULL, decimales = 2){
   tabla03 <- mis_tablas[[2]]
   ##############################################################################
   
-  frase02 <- "Observe si los valores mínimos y máximos de la variable tienen sentido."
-  frase03 <- frase02
+  frase02 <- "Observe si los valores mínimos de la variable en cada categorìa tienen sentido."
+  frase03 <- "Observe si los valores máximos de la variable en cada categorìa tienen sentido."
   ##############################################################################
   # Return exitoso
   #  salida <- list(tabla01, frase01, tabla02, frase02)
@@ -4333,16 +4333,68 @@ control_qc_RMedic <- function(base = NULL, columna = NULL, decimales = 2){
   
   
   tabla02 <- cbind.data.frame("Cantidad de datos" = tapply(minibase[,2], minibase[,1], length),
-                              "Mínimo" = tapply(minibase[,2], minibase[,1], min),
-                              "Máximo" = tapply(minibase[,2], minibase[,1], max))
+                              "Mínimo" = tapply(minibase[,2], minibase[,1], min))
+  
+  # Agregar columna con la posición del valor mínimo
+  tabla02$"Cantidad Mínimo" <- tapply(minibase[,2], minibase[,1], function(x){ 
+    mis_valores <- which.min(x)
+    length(mis_valores)
+  }
+  )
+  
+  
+  # Agregar columna con la posición del valor mínimo
+  tabla02$"Posición Mínimo" <- tapply(minibase[,2], minibase[,1], function(x){ 
+    mis_valores <- which.min(x)
+    el_limite <- 5
+    dt_muchos <- length(mis_valores)>=el_limite
+    pos_max <- ifelse(dt_muchos, 5, length(mis_valores))
+    mis_valores <- mis_valores[1:pos_max]
+    mis_valores <- paste0(mis_valores, collapse = ", ")
+    if(dt_muchos) mis_valores <- paste0(mis_valores, " ... (Solo primeros ", pos_max, "datos.")
+    mis_valores
+    
+    }
+    )
   
   
   tabla02 <- cbind.data.frame(rownames(tabla02), tabla02)
   colnames(tabla02)[1] <- "Categorías"
   
+  tabla04 <- cbind.data.frame("Cantidad de datos" = tapply(minibase[,2], minibase[,1], length),
+                              "Máximo" = tapply(minibase[,2], minibase[,1], max))
+  
+  
+  # Agregar columna con la posición del valor mínimo
+  tabla04$"Cantidad Máximo" <- tapply(minibase[,2], minibase[,1], function(x){ 
+    mis_valores <- which.max(x)
+    length(mis_valores)
+  }
+  )
+  
+  
+  # Agregar columna con la posición del valor mínimo
+  tabla04$"Posición Máximo" <- tapply(minibase[,2], minibase[,1], function(x){ 
+    mis_valores <- which.max(x)
+    el_limite <- 5
+    dt_muchos <- length(mis_valores)>=el_limite
+    pos_max <- ifelse(dt_muchos, 5, length(mis_valores))
+    mis_valores <- mis_valores[1:pos_max]
+    mis_valores <- paste0(mis_valores, collapse = ", ")
+    if(dt_muchos) mis_valores <- paste0(mis_valores, " ... (Solo primeros ", pos_max, "datos.")
+    mis_valores
+    
+  }
+  )
+  
+  tabla04 <- cbind.data.frame(rownames(tabla04), tabla04)
+  colnames(tabla04)[1] <- "Categorías"
+  
+  frase04 <- "Observe si los valores máximos de la variable en cada categorìa tienen sentido."
+  
   # # # # # 
   # Cambiamos el orden de la salida
-  salida <- list(tabla02, frase02, tabla01, frase03, tabla03, frase01)
+  salida <- list(tabla02, frase02, tabla01, frase03, tabla03, frase01, tabla04, frase04)
   return(salida)
   
   

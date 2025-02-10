@@ -70,13 +70,23 @@ modules_02_control_ControlQC_SERVER <- function(input, output, session,
     Reactive_control_qc_RMedic()[[2]]
   })
   
+  # Control 1Q - Tabla 01      
+  output$Tabla_Control02 <- renderTable(rownames = FALSE, align= "c",{
+    Reactive_control_qc_RMedic()[[7]]
+  })
+  
+  # Control 1Q - Texto 01 
+  output$Texto_Control02 <- renderText({
+    Reactive_control_qc_RMedic()[[8]]
+  })
+  
   # Control 1Q - Tabla 02      
-  output$Tabla_Control02 <- renderTable(align= "c",{
+  output$Tabla_Control03 <- renderTable(align= "c",{
     Reactive_control_qc_RMedic()[[3]]
   })
   
   # Control 1Q - Texto 02 
-  output$Texto_Control02 <- renderText({
+  output$Texto_Control03 <- renderText({
     Reactive_control_qc_RMedic()[[4]]
   })
   
@@ -99,16 +109,20 @@ modules_02_control_ControlQC_SERVER <- function(input, output, session,
       h4("- Las categorías y cantidad de categorías de la variable categórica deben tener sentido en el marco de la experiencia."), 
       h4("- Los valores mínimos y máximos de la variable numérica en cada categoría deben tener sentido en el marco de la experiencia."),
       br(),
-      h3_mod("Parte 1 de 2 - Combinación de Categorías"),
+      h3_mod("Parte 1 de 3 - Mínimos por categoría"),
       h4(htmlOutput(ns("Texto_Control01"))),
       br(),
       tableOutput(ns("Tabla_Control01")),
       br(),
-      br(),
-      h3_mod("Parte 2 de 2 - Celdas vacías"),
+      h3_mod("Parte 2 de 3 - Màximos por categoría"),
       h4(htmlOutput(ns("Texto_Control02"))),
       br(),
-      tableOutput(ns("Tabla_Control02"))
+      tableOutput(ns("Tabla_Control02")),
+      br(),
+      h3_mod("Parte 3 de 3 - Celdas vacías"),
+      h4(htmlOutput(ns("Texto_Control03"))),
+      br(),
+      tableOutput(ns("Tabla_Control03"))
       
     )
   })
