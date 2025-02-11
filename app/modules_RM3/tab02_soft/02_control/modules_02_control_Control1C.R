@@ -35,15 +35,15 @@ modules_02_control_Control1C_SERVER <- function(input, output, session,
     
   })
   
-  # Todas las tablas 1Q
+  # Todas las tablas 1C
   Reactive_control_1c_RMedic <- reactive({
     
     if(is.null(casoRMedic())) return(NULL)
     if(casoRMedic() != 2) return(NULL)
     
     
-    salida <-  control_1c_RMedic(base = base(), columna = batalla_naval()[[1]])
-    
+    # salida <-  control_1c_RMedic(base = base(), columna = batalla_naval()[[1]])
+    salida <-  control_1c_full(dataframe = base(), columna = batalla_naval()[[1]])
     
     
     
@@ -54,26 +54,26 @@ modules_02_control_Control1C_SERVER <- function(input, output, session,
   })  
   
   
-  
-  # Control 1Q - Tabla 01      
-  output$Tabla_Control01 <- renderTable(rownames = FALSE, align= "c",{
-    Reactive_control_1c_RMedic()[[1]]
-  })
-  
-  # Control 1Q - Texto 01 
+  # Control 1C - Texto 01 
   output$Texto_Control01 <- renderText({
-    Reactive_control_1c_RMedic()[[2]]
+    Reactive_control_1c_RMedic()[[3]][1]
   })
   
-  # Control 1Q - Tabla 02      
-  output$Tabla_Control02 <- renderTable(align= "c",{
-    Reactive_control_1c_RMedic()[[3]]
-  })
-  
-  # Control 1Q - Texto 02 
-  output$Texto_Control02 <- renderText({
+  # Control 1C - Tabla 01      
+  output$Tabla_Control01 <- renderTable(rownames = FALSE, align= "c",{
     Reactive_control_1c_RMedic()[[4]]
   })
+  
+  # Control 1C - Texto 02 
+  output$Texto_Control02 <- renderText({
+    Reactive_control_1c_RMedic()[[5]]
+  })
+  
+  # Control 1C - Tabla 02      
+  output$Tabla_Control02 <- renderTable(align= "c",{
+    Reactive_control_1c_RMedic()[[6]]
+  })
+  
   
   
   
@@ -87,11 +87,16 @@ modules_02_control_Control1C_SERVER <- function(input, output, session,
     
     
     
+    output$"Intro" <- renderUI({
+      fluidRow(
+      h2_mod(Reactive_control_1c_RMedic()[["texto_title"]]["text01"]),
+      h4("- Los valores mínimo y máximo deben tener sentido en el marco de la experiencia."), 
+      h4("- Corroborar la presencia o no de celdas vacías.")
+      )
+    })
     # Si es el caso 2, seguimos!
     div(
-      h2_mod("RMedic - Control para 1 Variable Numérica"),
-      h4("- Los valores mínimo y máximo deben tener sentido en el marco de la experiencia."), 
-      h4("- Corroborar la presencia o no de celdas vacías."),
+      htmlOutput(ns("Intro")),
       br(),
       br(),
       h3_mod("Parte 1 de 2 - Mínimo y Máximo dentro de lo esperado"),

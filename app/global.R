@@ -95,6 +95,14 @@ vector_files_modules_RM3 <- list.files(path = "modules_RM3", full.names = T, rec
 # Cargar cada archivo .R
 lapply(vector_files_modules_RM3, source)
 ########################################
+# Obtener la lista de archivos .R en la carpeta especificada
+vector_files_fn_RM3 <- list.files(path = "fn_RM3", full.names = T, recursive = T, pattern = "\\.R$")
+
+
+
+# Cargar cada archivo .R
+lapply(vector_files_fn_RM3, source)
+########################################
 # Tabs for all
 #source("modules_01_tabs/homeTab.R")
 #source("modules_01_tabs/RMedicTab.R")
