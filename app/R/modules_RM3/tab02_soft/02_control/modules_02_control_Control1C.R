@@ -43,7 +43,7 @@ modules_02_control_Control1C_SERVER <- function(input, output, session,
     
     
     # salida <-  control_1c_RMedic(base = base(), columna = batalla_naval()[[1]])
-    salida <-  control_1c_full(dataframe = base(), columna = batalla_naval()[[1]])
+    salida <-  control_1c_full(dataframe = base(), selected_col = batalla_naval()[[1]])
     
     
     
@@ -89,7 +89,7 @@ modules_02_control_Control1C_SERVER <- function(input, output, session,
     
     output$"Intro" <- renderUI({
       fluidRow(
-      h2_mod(Reactive_control_1c_RMedic()[["texto_title"]]["text01"]),
+      h2_mod(Reactive_control_1c_RMedic()[["text_title"]]["text01"]),
       h4("- Los valores mínimo y máximo deben tener sentido en el marco de la experiencia."), 
       h4("- Corroborar la presencia o no de celdas vacías.")
       )
