@@ -86,10 +86,10 @@ source("lib.R")
 source("functionsHo.R")
 
 source("fn_00_general/fn_00_general.R")
-source("R/fn_shiny/fn_shiny.R")
+source("fn_shiny/fn_shiny.R")
 ########################################
 # Obtener la lista de archivos .R en la carpeta especificada
-vector_files_modules_RM3 <- list.files(path = "R/modules_RM3", full.names = T, recursive = T, pattern = "\\.R$")
+vector_files_modules_RM3 <- list.files(path = "modules_RM3", full.names = T, recursive = T, pattern = "\\.R$")
 
 
 
@@ -97,7 +97,7 @@ vector_files_modules_RM3 <- list.files(path = "R/modules_RM3", full.names = T, r
 lapply(vector_files_modules_RM3, source)
 ########################################
 # Obtener la lista de archivos .R en la carpeta especificada
-vector_files_fn_RM3 <- list.files(path = "R/fn_RM3", full.names = T, recursive = T, pattern = "\\.R$")
+vector_files_fn_RM3 <- list.files(path = "fn_RM3", full.names = T, recursive = T, pattern = "\\.R$")
 
 
 
