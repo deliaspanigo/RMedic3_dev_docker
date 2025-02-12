@@ -9,7 +9,7 @@ git clone https://github.com/deliaspanigo/RMedic3.git app
 
 
 # Build the Docker image with the name 'my_docker_image'
-docker build -t legion949/dk_rmedic3_dev_img:0.0.1 .
+docker build -t legion949/dk_rmedic3_dev_img:0.0.2 .
 
 
 # Run the Docker container with the name 'my_docker_container'
