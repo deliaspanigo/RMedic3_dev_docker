@@ -24,10 +24,40 @@ plan(multicore, workers = availableCores())  # Usa todos los núcleos disponible
 
 
 # # # User interface - UI
-ui <- shiny::navbarPage(theme = "styles.css",inverse=TRUE,
+# ui <- shiny::navbarPage(theme = "styles.css",inverse=TRUE,
+ui <- shiny::navbarPage(inverse=TRUE,
                         useShinyjs(),
                         tags$head(
                           tags$style(HTML("
+                          
+                          .well {
+  
+   padding: 12px;
+  margin-bottom: 10px;
+
+  background-color:orange;
+  
+  border-color:black;
+  border-radius: 40px;
+  border-width: 10px 10px 10px;
+  border: 10px solid #d4d4d4;
+  
+                          }
+                          
+                          /*  Esto es lo que agregue...*/
+.nav-tabs {
+  margin-bottom: 10px;
+
+  background-color:orange;
+  
+  border-color:black;
+  border-radius: 40px;
+  border-width: 10px 10px 10px;
+  border: 10px solid #d4d4d4;
+  
+
+}
+
             .selectize-input, .selectize-dropdown, .select-input, .select-dropdown,
             [type = 'number'], .radio, label, .nav-tabs, table, data.table{
             font-size: 120%;
@@ -94,6 +124,8 @@ ui <- shiny::navbarPage(theme = "styles.css",inverse=TRUE,
 /* Añadir línea separadora entre pestañas del tabset */
 .nav-tabs > li:not(:last-child) {
   border-right: 2px solid #ccc !important; /* Línea vertical gris entre pestañas */
+  border-bottom: 2px solid #ccc !important; /* Línea inferior gris */
+
 }
 
 /* Mejorar la apariencia de la pestaña activa */
@@ -211,7 +243,7 @@ ui <- shiny::navbarPage(theme = "styles.css",inverse=TRUE,
         "))
                         ),   
                         
-                        title = strong("RMedic 3.1.5"),
+                        title = strong("RMedic 3.1.6"),
                         windowTitle = "RMedic - Medicina y R", 
                         fluid = TRUE, 
                         header = column(12, ""),

@@ -70,7 +70,8 @@ module_act001_s999_01_RM_source_options_server <- function(id){
           choices = c("01 - xlsx files"       = "source_xlsx",
                       "02 - csv files"        = "source_csv",
                       "03 - RMedic examples"  = "source_RMedic",
-                      "04 - R examples"       = "source_Rdata"),
+                      "04 - R examples"       = "source_Rdata",
+                      "05 - UCC"              = "source_UCC"),
           selected = "source_Rdata"
           
         )

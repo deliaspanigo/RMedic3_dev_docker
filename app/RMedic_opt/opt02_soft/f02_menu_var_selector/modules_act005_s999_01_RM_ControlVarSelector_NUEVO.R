@@ -470,7 +470,8 @@ mod_boton_accion_server <- function(id, list_seleccion_variables, num_variables,
       
       # Verificar si hay variables duplicadas
       if(all_ok && num_vars >= 1) {
-        vector_var_names <-     sapply(list_seleccion_variables(), function(x){x$nombre})
+        # vector_var_names <-     sapply(list_seleccion_variables(), function(x){x$nombre})
+        vector_var_names <- sapply(variables, function(v) v$nombre)
         # print(vector_var_names)
         
         vector_system_ref_B <- sapply(list_seleccion_variables(), function(x){x$system_ref_B})
@@ -491,7 +492,7 @@ mod_boton_accion_server <- function(id, list_seleccion_variables, num_variables,
           all_ok <- FALSE
           error_msg <- "Una variable numérica solo puede contener números.<br>"
           for(k in 1:length(vector_dt_problem)){
-            error_msg <- paste0(error_msg, "La variable '", vector_var_name[i], "' ha sido detallada como 
+            error_msg <- paste0(error_msg, "La variable '", variables[[i]]$"nombre", "' ha sido detallada como 
                                 numérica pero en la columna se hayan también letras o símbolos.<br>")   
           }
 

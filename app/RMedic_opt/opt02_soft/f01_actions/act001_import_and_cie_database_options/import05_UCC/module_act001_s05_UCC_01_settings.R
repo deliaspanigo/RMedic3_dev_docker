@@ -1,13 +1,14 @@
-module_act001_s03_RMedic_01_settings_ui <- function(id){
+module_act001_s05_UCC_01_settings_ui <- function(id){
   ns <- shiny::NS(id)
   
   div(
+    uiOutput(ns("carrera_selector")),
     uiOutput(ns("iu_base_selector")),
     uiOutput(ns("ui_action_button"))  # Botón de acción siempre visible
   )
 }
 
-module_act001_s03_RMedic_01_settings_server <- function(id, sui_data_source){
+module_act001_s05_UCC_01_settings_server <- function(id, sui_data_source){
   
   moduleServer(
     id,
@@ -24,20 +25,38 @@ module_act001_s03_RMedic_01_settings_server <- function(id, sui_data_source){
       
       check_ok <- reactive({
         req(sui_data_source())
-        sui_data_source() == "source_RMedic"
+        sui_data_source() == "source_UCC"
       })
       
       ################################################
       
+      output$"carrera_selector" <- renderUI({
+        req(check_ok())
+        vector_opt <- c("Medicina" = "MD", 
+                        "Nutrición" =  "NT")
+        
+        vector_opt <- c("Seleccione..." = "", vector_opt)
+        
+        selectInput(inputId = ns("the_carrera"), 
+                    label = "Carrera", 
+                    choices = vector_opt 
+                      )
+      })
+      
+      # UCC - medicina 
+      
       all_names_database <- reactive({
         req(check_ok())
+        req(input$"the_carrera")
         
         # list.files(input_folder_master)
         #datasets_info <- data(package = "RMedic")
         #dataset_names <- datasets_info$results[, "Item"]
         dataset_names <- names(data_list_RMedic)
-        my_str <- paste0("^", "RM")
+        my_str <- paste0("^", input$"the_carrera")
+        
         dataset_names <- dataset_names[grepl(pattern = my_str, x = dataset_names)]
+        # print( dataset_names)
         dataset_names
         
       })
@@ -45,7 +64,7 @@ module_act001_s03_RMedic_01_settings_server <- function(id, sui_data_source){
       select_opt_database <- reactive({
         req(check_ok())
         req(all_names_database())
-        
+        req(input$"the_carrera")
         # # # Nombre de las bases de datos
         vector_obj <- all_names_database()
         
@@ -72,16 +91,23 @@ module_act001_s03_RMedic_01_settings_server <- function(id, sui_data_source){
       
       output$iu_base_selector <- renderUI({
         req(check_ok())
-        
+        req(input$"the_carrera")
         vector_visual <- c("Seleccione una..." = "", select_opt_database())
         
         
         shiny::selectInput(
           inputId = ns("selected_input_file"),
-          label = "RMedic Examples",
+          label = "UCC Examples",
           choices = vector_visual
         )
       })
+      
+      
+      
+      
+      
+      
+      
       
       # UI para el botón de acción - MODIFICADO para mostrarse siempre
       output$ui_action_button <- renderUI({
@@ -110,7 +136,7 @@ module_act001_s03_RMedic_01_settings_server <- function(id, sui_data_source){
           if (is_disabled) {
             div(
               style = "margin-top: 10px; color: #e57373; font-style: italic; font-size: 16px; font-weight: bold",
-              "Selecciona un ejemplo de RMedic"
+              "Selecciona un ejemplo de UCC"
             )
           },
           # Mostrar mensaje de confirmación solo si el estado es confirmed

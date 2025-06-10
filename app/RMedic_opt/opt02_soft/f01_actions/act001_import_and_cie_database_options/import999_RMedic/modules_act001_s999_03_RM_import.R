@@ -74,8 +74,27 @@ module_act001_s999_03_RM_import_server <- function(id, list_sui_settings) {
         
         req(selected_file)
         
-        # Lógica según la fuente de datos
-        if(data_source() == "source_Rdata") {
+        if(data_source() == "source_UCC") {
+          tryCatch({
+            if(exists("data_list_RMedic", envir = .GlobalEnv)) {
+              data_list <- get("data_list_RMedic", envir = .GlobalEnv)
+              if(selected_file %in% names(data_list)) {
+                database(data_list[[selected_file]])
+                original_file_name(selected_file)
+                info_extra("No details")
+              } else {
+                error_msg <- paste("El dataset", selected_file, "no existe en data_list_RMedic")
+                show_error_popup(error_msg)
+              }
+            } else {
+              error_msg <- "El objeto data_list_RMedic no existe en el entorno global"
+              show_error_popup(error_msg)
+            }
+          }, error = function(e) {
+            error_msg <- paste("Error al cargar el dataset UCC:", e$message)
+            show_error_popup(error_msg)
+          })
+        } else  if(data_source() == "source_Rdata") {
           tryCatch({
             database(get(selected_file))
             original_file_name(selected_file)
