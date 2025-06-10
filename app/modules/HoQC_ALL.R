@@ -35,8 +35,8 @@ HoQC_SERVER <- function(input, output, session,
     
     if(casoRMedic() == caso) {
       
-      if(batalla_naval()[[6]]) ejecucion <- TRUE else ejecucion <- FALSE 
-      
+      #if(batalla_naval()[[6]]) ejecucion <- TRUE else ejecucion <- FALSE 
+      if(batalla_naval()$"verificacion_general") ejecucion <- TRUE else ejecucion <- FALSE
     } else ejecucion <- FALSE
     
     
@@ -207,7 +207,7 @@ HoQC_SERVER <- function(input, output, session,
 
 
       div(
-        h2("RMedic - Gráficos para 1 Variable Categórica y 1 Variable Numérica"),
+        h2("RMedic - Pruebas de hipótesis para 1 Variable Categórica y 1 Variable Numérica"),
         tabsetPanel(id = ns("Ho_qc"),
                     tabPanel(title = "RMedic Help!", value = 1,
                              HoQC_01_RMedicHelp_UI(ns("ho07A"))),

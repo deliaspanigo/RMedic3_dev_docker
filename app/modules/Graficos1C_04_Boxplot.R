@@ -453,35 +453,40 @@ Graficos1C_04_Boxplot_SERVER <- function(input, output, session,
     # 
     # 
     
-    
+    texto01 <- c("Mínimo", "Q1", "Q2 (Mediana)", "Q3", "Máximo")
+    texto02 <- c("25%", "25%", "25%", "25%")
+    la_media <- as.numeric(as.character(tablas_1c()[[2]][1,3]))
+    #print(tablas_1c())
+
+    mis_valores <- c(tablas_1c()[[2]][1,2],
+                     tablas_1c()[[3]][1,c(2,5)],
+                     tablas_1c()[[2]][1,5])
     coordenadas <-   boxplot(minibase()[1],
                              ylim = c(valores_usuario()$y_min, valores_usuario()$y_max),
                              ylab = valores_usuario()$ylab, xlab = valores_usuario()$xlab,
                              col = valores_usuario()$color,
                              range = 0)
     
+    # points(x = 1, y = la_media, pch = 19, col = "black", cex = 1.5)
+    
+
+    
    # coordenadas <- round2(coordenadas, decimales())
     
-    texto01 <- c("Mínimo", "Q1", "Q2 (Mediana)", "Q3", "Máximo")
-    texto02 <- c("25%", "25%", "25%", "25%")
     
-    coordenadasY <- coordenadas$stats
-    mis_valores <- c(tablas_1c()[[2]][1,2],
-                     tablas_1c()[[3]][1,c(2,5)],
-                     tablas_1c()[[2]][1,5])
     
     
     
     if (valores_usuario()$ayuda) {
       
       #   text(1.25, coordenadas$stats, texto01, pos = 4, cex = 1.5)
-      
+      coordenadasY <- coordenadas$stats
       mediasY <- c()
       for(k in 1:(length(coordenadasY)-1)) mediasY[k] <- mean(coordenadasY[c(k, (k+1))])
       
       
       text(1.25, coordenadasY, texto01, pos = 4, cex = 1.5)
-      text(0.75, coordenadasY, mis_valores, pos = 2, cex = 1.5)
+      text(0.75, coordenadasY, mis_valores, pos = 4, cex = 1.5)
       
       colores <- rep(c("red", "blue"), 2)
       
@@ -510,6 +515,8 @@ Graficos1C_04_Boxplot_SERVER <- function(input, output, session,
       text(pos02, mediasY, texto02, srt = 90)
       
     }
+    
+    
     
   })
   

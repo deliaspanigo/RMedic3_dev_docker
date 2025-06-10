@@ -2,7 +2,7 @@
 # https://hub.docker.com/layers/rocker/shiny/4.4.2/images/sha256-9a3ce1da32e046349297e927fe9fc7e696ff3b1065dcdb1e1f18479d59570424
 
 #FROM rocker/shiny:latest
-FROM rocker/shiny:4.4.2
+FROM rocker/shiny:4.4.3
 
 # system libraries of general use
 ## install debian packages
@@ -40,6 +40,5 @@ EXPOSE 3838
 
 # run app on container start
 CMD ["R", "-e", "shiny::runApp('/app', host = '0.0.0.0', port = 3838)"]
-
 
 

@@ -32,7 +32,8 @@ modules_04_graficos_Graficos1C_SERVER <- function(input, output, session,
     
     if(casoRMedic() == caso) {
       
-      if(batalla_naval()[[6]]) ejecucion <- TRUE else ejecucion <- FALSE 
+      #if(batalla_naval()[[6]]) ejecucion <- TRUE else ejecucion <- FALSE 
+      if(batalla_naval()$"verificacion_general") ejecucion <- TRUE else ejecucion <- FALSE
       
     } else ejecucion <- FALSE
     

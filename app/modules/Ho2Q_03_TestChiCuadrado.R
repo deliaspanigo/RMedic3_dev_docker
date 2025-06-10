@@ -36,6 +36,47 @@ Ho2Q_03_TestChiCuadrado_SERVER <- function(input, output, session,
   
   
   
+  ##### 2025
+  output$tabla22 <- renderTable({
+    
+    mi_tabla <- data.frame(
+      "Detalle" = c("Filas", "Columnas"),
+      "Variables" = colnames(minibase())
+    )
+    
+    mi_tabla <- mi_tabla[vector_orden()]
+    mi_tabla
+  })
+  
+  output$menu_cambio <- renderUI({
+    req(minibase())
+    
+    vector_choices <- c("no invertir", "invertir")
+    names(vector_choices) <- colnames(minibase())
+    div(
+      fluidRow(
+        column(4, selectInput(inputId = ns("invertir"), label = "En filas...", choices = vector_choices)),
+        # column(4, actionButton(inputId = ns("activate"), label = "Aplicar")),
+        column(4, tableOutput(ns("tabla22")))
+      )
+    )
+  })
+  
+  
+  vector_orden <- reactive({
+    req(input$invertir)
+    vector_orden <- c(1,2)
+    if(input$invertir == "invertir") vector_orden <- c(2,1)
+    vector_orden
+  })
+  
+  minibase_mod <- reactiveVal()
+  observe({
+    mi_vector_cambio <- vector_orden() # 2025
+    minibase_mod(minibase()[mi_vector_cambio])
+  })
+  ####2025##############################################
+  
   
   ##################################################
   
@@ -48,11 +89,15 @@ Ho2Q_03_TestChiCuadrado_SERVER <- function(input, output, session,
     
     if(!control_interno01()) return(NULL)
     if(is.null(minibase())) return(NULL)
+    if(is.null(minibase_mod())) return(NULL)
+    
+        
+    
     if(is.null(decimales())) return(NULL)
     if(is.null(alfa())) return(NULL)
 
     
-    Test_2Q_ChiCuadrado(base = minibase(),
+    Test_2Q_ChiCuadrado(base = minibase_mod(),
                         columnas = c(1,2),
                         decimales = decimales(),
                         alfa = alfa())
@@ -119,28 +164,31 @@ Ho2Q_03_TestChiCuadrado_SERVER <- function(input, output, session,
   output$armado_ho <- renderUI({
     
     div(
-      h2("Test Chi Cuadrado"),
+      h2_mod("Test Chi Cuadrado"),
       "El test Chi Cuadrado puede realizarse en dos variantes: Clásica y Montecarlo.", br(),
-      "En ambos casos el juego de hipótesis es el mismo.", br(),
+      "En ambos casos el juego de hipótesis es el mismo.", 
       br(),
-      h2("Juego de Hipótesis"),
+      br(),
+      uiOutput(ns("menu_cambio")),
+      br(),
+      h2_mod("Juego de Hipótesis"),
       htmlOutput(ns("frase_hipotesis")),
       br(),
       br(),
       tabsetPanel(
         tabPanel("Clásico", 
-                  h2("Requisitos del test Chi Cuadrado Clásico"),
+                  h2_mod("Requisitos del test Chi Cuadrado Clásico"),
                   tableOutput(ns("tabla_requisitos")),
                   htmlOutput(ns("frase_requisitos")),
                   br(), 
-                  h2("Tabla - Test Chi Cuadrado Clásico"),
+                  h2_mod("Tabla - Test Chi Cuadrado Clásico"),
                   tableOutput(ns("tabla_test01")),
                   htmlOutput(ns("frase_test01")),
                   br(),
                   br()
         ),
         tabPanel("Montecarlo", 
-                 h2("Tabla - Test Chi Cuadrado Montecarlo"),
+                 h2_mod("Tabla - Test Chi Cuadrado Montecarlo"),
                  tableOutput(ns("tabla_test02")),
                  htmlOutput(ns("frase_test02")),
                  br(),

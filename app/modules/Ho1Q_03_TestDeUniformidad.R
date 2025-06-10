@@ -113,7 +113,7 @@ Ho1Q_03_TestDeUniformidad_SERVER <- function(input, output, session,
     
   
     
-    Test_1Q_Proporciones( input_base = minibase(),
+    Test_1Q_TestDeUnaProporcion( input_base = minibase(),
                           input_categoria_exito = input$categoria_exito,
                           input_tipo_prueba = input$tipo_prueba_ho, 
                           input_prop_ho = input$valor_bajo_ho,

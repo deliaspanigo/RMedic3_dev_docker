@@ -706,3 +706,61 @@ ol.outer {
   color: #777;
 }
 */
+
+
+/* Control del tamaño de letra en tabpanels - usando !important para mayor prioridad */
+.nav-tabs > li > a {
+  font-size: 20px !important; 
+  padding: 8px 12px !important;
+  
+}
+
+/* Mejora la configuración del contenedor de pestañas para permitir múltiples líneas */
+.tabbable .nav-tabs,
+.nav-tabs,
+ul.nav.nav-tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  margin-bottom: 15px !important;
+}
+
+/* Sobrescribe el comportamiento de flotación por defecto */
+.nav-tabs > li {
+  float: none !important;
+  display: inline-block !important;
+  margin-bottom: 5px !important;
+}
+
+/* Refuerza la línea divisoria */
+.tab-content {
+  border-top: 2px solid #68cbd0 !important;
+  padding-top: 15px !important;
+  clear: both !important;
+}
+
+/* Mejora visibilidad de pestañas activas */
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus {
+  background-color: #fff !important;
+  color: #555 !important;
+  font-weight: bold !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Hover en pestañas */
+.nav-tabs > li > a:hover {
+  border-color: #eee #eee #ddd !important;
+  background-color: #f8f8f8 !important;
+}
+
+/* Ajusta contenido dentro de cada panel */
+.tab-pane {
+  padding: 15px !important;
+  border: 1px solid #ddd !important;
+  border-top: none !important;
+  border-radius: 0 0 4px 4px !important;
+}
+
+

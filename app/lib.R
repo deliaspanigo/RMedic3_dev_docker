@@ -210,7 +210,7 @@ RMedic_1q_tablas <- function(input_base = NULL, input_decimales = NULL, input_ca
       ls_porcentaje <- paste0(ls_porcentaje, "%")
       
       tabla02 <- cbind(grupos, porcentaje, li_porcentaje, ls_porcentaje)
-      colnames(tabla02) <- c(rotulo, "Porcentaje", paste0("Límite Inferior ", confianza), paste0("Límite Supeior ", confianza))
+      colnames(tabla02) <- c(rotulo, "Porcentaje", paste0("Límite Inferior ", confianza), paste0("Límite Superior ", confianza))
       tabla02 <- as.data.frame(tabla02)
       rownames(tabla02) <- rownames(tabla01)
       
@@ -2811,7 +2811,14 @@ graficos_2c <- function(minibase = NULL,
       
      
       
-      
+          # Tabla de para 2C
+          tablas_2c <- RMedic_2c_tablas(input_base = minibase)
+          
+          # Medias
+          vector_medias <- as.numeric(as.character(tablas_2c[[1]][,2]))
+          names(vector_medias) <- tablas_2c[[1]][,1]
+          seleccionados <- 1:length(vector_medias)
+          
       boxplot(minibase, 
               col = cols, 
               xlim = xlim, 
@@ -2821,6 +2828,7 @@ graficos_2c <- function(minibase = NULL,
               )
       axis(1, at=1:cantidad_grupos, labels = c(labvar1, labvar2))
    
+      #points(x = seleccionados, y = vector_medias , pch = 19, col = "black", cex = 1.5)
       
     } else
           if(tipo_grafico == "violinplot") {
@@ -3108,7 +3116,22 @@ graficos_qc <- function(minibase = NULL,
           # Limite del eje Y
           if(is.null(ylim)) ylim <- c(min(minibase[,2]), max(minibase[,2]))
 
-
+          # Tablas de QC
+          tablas_qc <- RMedic_qc_tablas(input_base =  minibase,
+                                        input_decimales = NULL,
+                                        input_min = NULL,
+                                        input_max = NULL,
+                                        input_breaks = NULL,
+                                        input_side = NULL
+          )
+          
+          cantidad_categorias <- nrow(tablas_qc[[1]]) - 1
+          seleccionados <- c(1:cantidad_categorias)
+          categorias <- tablas_qc[[1]][seleccionados,1]
+          # Medias
+          vector_medias <- tablas_qc[[1]][seleccionados,2]
+          names(vector_medias) <- vector_medias
+          
           boxplot(minibase[,2] ~ minibase[,1], 
                   col = cols, 
                   ylim = ylim, 
@@ -3116,6 +3139,8 @@ graficos_qc <- function(minibase = NULL,
                   ylab = ylab,
                   range = 0
           )
+          
+         # points(x = seleccionados, y = vector_medias , pch = 19, col = "black", cex = 1.5)
         #  axis(1, at=1:cantidad_grupos, labels = c(labvar1, labvar2))
           
           
@@ -3467,9 +3492,10 @@ KM_TestLogRank <- function(base = NULL, alfa = 0.05){
               "Se rechaza la Hipótesis Nula.<br/>", "\n",
               "Existen diferencias estadísticamente significativas.<br/>", "\n",
               "Al menos uno de los grupos son estadísticamente diferentes.<br/>", "\n",
-              "Al ser más 3 o más grupos, el test de LogRank solo tiene la capacidad de definir si 
+              "En caso de ser solo 2 grupos y existir diferencias estadísticas, los dos grupos son diferentes entre si.<br/>", "\n",
+              "En caso de ser 3 o más grupos el test de LogRank solo tiene la capacidad de definir si 
               al menos uno de los grupos es estadísticamente diferente pero no tiene la capacidad de indicar 
-              cual o cuale son los grupos estadísticamente diferentes. Rechazar la hipótesis nula no 
+              cual o cuales son los grupos estadísticamente diferentes. Rechazar la hipótesis nula no 
               implica que necesariamente todos los grupos son estadísticamente diferentes.")
               
   
@@ -4239,7 +4265,9 @@ control_qc_RMedic <- function(base = NULL, columna = NULL, decimales = 2){
   
   # Formato de la tabla02 y tabla03
   
+  if(FALSE){
   mis_tablas <- list()
+  
   
   # Una tabla para cada variable
   for (h in 1:2) {
@@ -4319,10 +4347,12 @@ control_qc_RMedic <- function(base = NULL, columna = NULL, decimales = 2){
   names(mis_tablas) <- colnames(minibase)
   tabla02 <- mis_tablas[[1]]
   tabla03 <- mis_tablas[[2]]
+  }
+  tabla03 <- NA
   ##############################################################################
   
-  frase02 <- "Observe si los valores mínimos de la variable en cada categorìa tienen sentido."
-  frase03 <- "Observe si los valores máximos de la variable en cada categorìa tienen sentido."
+  frase02 <- "Observe si los valores mínimos de la variable en cada categoría tienen sentido."
+  frase03 <- "Observe si los valores máximos de la variable en cada categoría tienen sentido."
   ##############################################################################
   # Return exitoso
   #  salida <- list(tabla01, frase01, tabla02, frase02)
@@ -4390,7 +4420,7 @@ control_qc_RMedic <- function(base = NULL, columna = NULL, decimales = 2){
   tabla04 <- cbind.data.frame(rownames(tabla04), tabla04)
   colnames(tabla04)[1] <- "Categorías"
   
-  frase04 <- "Observe si los valores máximos de la variable en cada categorìa tienen sentido."
+  frase04 <- "Observe si los valores máximos de la variable en cada categoría tienen sentido."
   
   # # # # # 
   # Cambiamos el orden de la salida

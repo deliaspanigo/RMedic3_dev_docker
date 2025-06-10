@@ -30,6 +30,8 @@ library(stringi)
 library(ggplot2)
 library(readxl)
 library(usethis)
+library(readxl)
+
 #
 #
 library(httr)
@@ -87,6 +89,31 @@ source("functionsHo.R")
 
 source("fn_00_general/fn_00_general.R")
 source("fn_shiny/fn_shiny.R")
+########################################
+super_source <- function(vector_paths){
+
+  lapply(vector_paths, function(path) {
+    tryCatch({
+      source(path)
+      cat("✓ Cargado:", path, "\n")
+    }, error = function(e) {
+      cat("✗ Error en", path, ":", e$message, "\n")
+    })
+  })
+  
+}
+
+vector_files_module_opt <- list.files(path = "RMedic_opt", full.names = T, recursive = T, pattern = "^module_.*\\.R$")
+super_source(vector_files_module_opt)
+
+# Aplicar source a cada path
+
+vector_files_modules_opt <- list.files(path = "RMedic_opt", full.names = T, recursive = T, pattern = "^modules_.*\\.R$")
+if(length(vector_files_modules_opt) > 0) lapply(vector_files_modules_opt, source)
+
+vector_files_fn_opt <- list.files(path = "RMedic_opt", full.names = T, recursive = T, pattern = "^fn_.*\\.R$")
+if(length(vector_files_fn_opt) > 0) lapply(vector_files_fn_opt, source)
+
 ########################################
 # Obtener la lista de archivos .R en la carpeta especificada
 vector_files_modules_RM3 <- list.files(path = "modules_RM3", full.names = T, recursive = T, pattern = "\\.R$")

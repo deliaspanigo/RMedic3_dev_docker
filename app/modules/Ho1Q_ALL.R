@@ -18,7 +18,7 @@ Ho1Q_SERVER <- function(input, output, session,
                               decimales,
                               alfa, batalla_naval) {
   
-  
+  observe({print("ADENTRO! de Ho1Q_SERVER!!!")})
   
   
   # NameSpaceasing for the session
@@ -59,13 +59,13 @@ Ho1Q_SERVER <- function(input, output, session,
              alfa = alfa)
   #  
   # 
-  # callModule(module = Ho1Q_02_TestDeUniformidad_SERVER,
-  #            id =  "ho03C",
-  #            minibase = minibase,
-  #            decimales = decimales,
-  #            control_ejecucion = control_ejecucion,
-  #            tablas_1q = tablas_1q,
-  #            alfa = alfa)
+  callModule(module = Ho1Q_03_TestDeUniformidad_SERVER,
+             id =  "ho03C",
+             minibase = minibase,
+             decimales = decimales,
+             control_ejecucion = control_ejecucion,
+             tablas_1q = tablas_1q,
+             alfa = alfa)
 
   
  

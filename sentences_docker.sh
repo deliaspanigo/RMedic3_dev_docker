@@ -1,22 +1,24 @@
 
 #!/bin/bash
 # Remove the 'app' directory if it exists
-if [ -d "app" ]; then
-    rm -rf app
-fi
+# if [ -d "app" ]; then
+#     rm -rf app
+# fi
 
-git clone https://github.com/deliaspanigo/RMedic3.git app
+# git clone https://github.com/deliaspanigo/RMedic3.git app
 
 
 # Build the Docker image with the name 'my_docker_image'
-docker build -t legion949/dk_rmedic3_dev_img:0.0.2 .
+docker build -t legion949/dk_rmedic3_dev_img:3.1.3 .
+
+docker run --name dk_rmedic3_dev_container -p 3838:3838 --rm legion949/dk_rmedic3_dev_img:3.1.3
 
 
 # Run the Docker container with the name 'my_docker_container'
-docker run --name dk_rmedic3_dev_container -p 3838:3838 --rm -d legion949/dk_rmedic3_dev_img:0.0.1 
+docker run --name dk_rmedic3_dev_container -p 3838:3838 --rm -d legion949/dk_rmedic3_dev_img:3.1.3
 
 # Run the Docker container with the name 'my_docker_container' and mount the local directory 'example-app' to the container directory '/app'
-docker run --name dk_rmedic3_dev_container -v $(pwd)/app:/app -p 3838:3838 --rm -d legion949/dk_rmedic3_dev_img:0.0.1
+docker run --name dk_rmedic3_dev_container -v $(pwd)/app:/app -p 3838:3838 --rm -d legion949/dk_rmedic3_dev_img:3.1.3
 
 
 # Run exec command to access the container
@@ -39,10 +41,10 @@ docker rmi legion949/dk_rmedic3_dev_img:0.0.1
 
 # Pushing the Docker image to Docker Hub
 ## Push the Docker image with version 0.0.1 to Docker Hub
-docker push legion949/dk_rmedic3_dev_img:0.0.1
+docker push legion949/dk_rmedic3_dev_img:3.1.3
 
 ## Tag the Docker image with 'latest' for Docker Hub
-docker tag legion949/dk_rmedic3_dev_img:0.0.1 legion949/dk_rmedic3_dev_img:latest
+docker tag legion949/dk_rmedic3_dev_img:3.1.3 legion949/dk_rmedic3_dev_img:latest
 
 ## Push the Docker image with 'latest' to Docker Hub
 docker push legion949/dk_rmedic3_dev_img:latest

@@ -342,7 +342,7 @@ Test_1C_TestNormalidad_ShapiroWilk <- function(input_base = NULL,
       
       
       frase1_v3 <- "El valor p=_mi_valor_p_ es menor que el valor de alfa=_mi_valor_alfa_ 
-                      por lo tanto <b><u>no se rechaza la Ho</b></u>.<br/>
+                      por lo tanto <b><u>se rechaza la Ho</b></u>.<br/>
                        La distribución de la variable '_mi_variable_' es 
                        estadísticamente diferente a la distribución normal."
     }
@@ -529,7 +529,7 @@ Test_1C_TestT_UnaMuestra <- function(input_base = NULL,
       
       
       frase1_v3 <- "El valor p=_mi_valor_p_ es menor que el valor de alfa=_mi_valor_alfa_ 
-                        por lo tanto <b><u>no se rechaza la Ho</b></u> de la prueba bilateral.<br/>
+                        por lo tanto <b><u>se rechaza la Ho</b></u> de la prueba bilateral.<br/>
                        La media muestral observada (_mi_media_obs_) de la variable '_mi_variable_' es 
                        estadísticamente diferente al valor de media poblacional esperado bajo hipótesis (_mi_mu_esp_)."
       }
@@ -839,7 +839,7 @@ Test_1C_TestWilcoxon_UnaMuestra <- function(input_base = NULL,
       
       
       frase1_v3 <- "El valor p=_mi_valor_p_ es menor que el valor de alfa=_mi_valor_alfa_ 
-                        por lo tanto <b><u>no se rechaza la Ho</b></u> de la prueba bilateral.<br/>
+                        por lo tanto <b><u>se rechaza la Ho</b></u> de la prueba bilateral.<br/>
                        La mediana muestral observada (_mi_mediana_obs_) de la variable '_mi_variable_' es 
                        estadísticamente diferente al valor de mediana poblacional esperado bajo hipótesis (_mi_mu_esp_)."
     }
@@ -3685,7 +3685,7 @@ Test_2C_TestRegresionLinealSimple <- function(input_base = NULL,
     
     
     frase_positiva_pendiente <- "La pendiente es estadísticamente significativa, de signo positivo y tiene un valor 
-                                  de '_mi_pendiente', por lo tanto un aumento en la variable X en una unidad ('_mi_variable1_') trae aparejado 
+                                  de '_mi_pendiente_', por lo tanto un aumento en la variable X en una unidad ('_mi_variable1_') trae aparejado 
                                   un aumento de la variable Y '_mi_variable2_' de '_mi_pendiente_' unidades."
     
     
@@ -5038,7 +5038,6 @@ Test_QC_TestT_DosMuestras_Independientes <- function(input_base = NULL,
   the_test <- t.test(VR ~ FACTOR,
                      alternative = input_tipo_prueba, 
                      mu = input_media_ho,
-                     paired = FALSE,
                      conf.level = confianza,
                      var.equal = TRUE)
   

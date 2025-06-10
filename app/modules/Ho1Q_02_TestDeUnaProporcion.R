@@ -25,6 +25,7 @@ Ho1Q_02_TestDeUnaProporcion_SERVER <- function(input, output, session,
   
   
   
+  
   # NameSpaceasing for the session
   ns <- session$ns
   
