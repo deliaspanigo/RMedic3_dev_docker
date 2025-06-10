@@ -10,13 +10,15 @@ Ho2C_01_RMedicHelp_UI <- function(id) {
            radioButtons(inputId = "help_ho_2c",
                         label = h3("Selección de Ayuda Automática"),
                         choices = c("RMedic Here!" = 1,
-                                    "XY" = 2,
-                                    "Media y Desvío Estándard" = 3,
-                                    "Media y Error Estándard" = 4,
-                                    "Boxplot" = 5,
-                                    "Violín plot" = 6,
-                                    "Dispersión" = 7,
-                                    "Conectores" = 8)
+                                    "Test de Correlación de Pearson" = 2,
+                                    "Test de Correlación de Spearman" = 3,
+                                    "Test de Regresión Lineal Simple" = 4,
+                                    "Test t (Dos muestras apareadas)" = 5,
+                                    "Test Wilcoxon (Dos muestras apareadas)" = 6,
+                                    "Test de Homogeneidad de varianzas de Fisher" = 7,
+                                    "Test de Homogeneidad de varianzas de Bartlett" = 8,
+                                    "Test de Homogeneidad de varianzas de Levenne" = 9,
+                                    "Test de Regresión Logística Simple" = 10)
            )),
     column(8,
            conditionalPanel(condition = "input.help_ho_2c == 1", 
@@ -24,13 +26,15 @@ Ho2C_01_RMedicHelp_UI <- function(id) {
                               h3("RMedic Here!"),
                               HTML(
                                 "Los gráficos más utilizados aplicados a una variable numérica son:<br/>
-                      - Gráfico de <b>Media y Desvío Estándard</b>.<br/>
-                      - Gráfico de <b>Media y Error Estándard</b>.<br/>
-                      - Gráfico de <b>Boxplot</b>.<br/>
-                      - Gráfico de <b>Violín</b>.<br/>
-                      - Gráfico de <b>Histograma</b>.<br/>
-                      - Gráfico de <b>Dispersión</b>.<br/>
-                      - Gráfico de <b>Puntos</b>.<br/>
+                      - <b>Test de Correlación de Pearson</b>.<br/>
+                      - <b>Test de Correlación de Spearman</b>.<br/>
+                      - <b>Test de Regresión Lineal Simple</b>.<br/>
+                      - <b>Test t (Dos muestras apareadas)</b>.<br/>
+                      - <b>Test Wilcoxon (Dos muestras apareadas)</b>.<br/>
+                      - <b>Test de Homogeneidad de varianzas de Fisher</b>.<br/>
+                      - <b>Test de Homogeneidad de varianzas de Bartlett</b>.<br/>
+                      - <b>Test de Homogeneidad de varianzas de Levenne</b>.<br/>
+                      - <b>Test de Regresión Logística Simple</b>.<br/>
                       Seleccionando la ayuda de cada uno encontrarás un resumen con
                       detalles teóricos y estructura de la base de datos.<br/>
                       Estos te ayudarán a determinar si estas herramientas pueden ser
@@ -40,80 +44,75 @@ Ho2C_01_RMedicHelp_UI <- function(id) {
                             ),
            conditionalPanel(condition = "input.help_ho_2c == 2", 
                             div(
-                              h3("Gráfico de Medias y Desvío Estándard"),
+                              h3("Test de Correlación de Pearson"),
                               HTML(
-                                "Se presenta un gráfico donde se observa el valor
-                                de la media (promedio) y el intervalo de: 
-                                media más un desvío estándard, media menos un desvío estándard."
+                                "Test de Correlación de Pearson."
                                 )
                               )
                             ),
            conditionalPanel(condition = "input.help_ho_2c == 3", 
                             div(
-                              h3("Gráfico de Medias y Error Estándard"),
+                              h3("Test de Correlación de Spearman"),
                               HTML(
-                                "Se presenta un gráfico donde se observa el valor
-                                de la media (promedio) y el intervalo de: 
-                                media más un error estándard, media menos un error estándard."
+                                "Test de Correlación de Spearman."
                                 )
                             )
            ),
            conditionalPanel(condition = "input.help_ho_2c == 4", 
                             div(
-                              h3("Boxplot"),
+                              h3("Test de Regresión Lineal Simple"),
                               HTML(
-                                "Se presenta un gráfico boxplot (caja) o también llamado 
-                                box & whisker plot (caja y bigote). La caja se extiende desde 
-                                el cuartilo 1 al cuartilo 3, los bigotes se extienden desde el 
-                                cuartilo 1 al mínimo y del cuartilo 3 al máximo. Dentro la caja 
-                                la mediana es detallada como una línea oscura."
+                                "Test de Regresión Lineal Simple."
                               )
                             )
            ),
            conditionalPanel(condition = "input.help_ho_2c == 5", 
                             div(
-                              h3("Violín Plot"),
+                              h3("Test t (Dos muestras apareadas)"),
                               HTML(
-                                "Se presenta un gráfico de violín. La caja negra interior 
-                                corresponde a la caja del boxplot. La mediana es presentada 
-                                como un punto blanco dentro de la caja. Simultáneamente 
-                                se grafica hacia los margenes laterales la distribución de 
-                                la variable. La silueta de la distribución llega hasta 
-                                el valor mínimo y máximo de la variable."
+                                "Test t (Dos muestras apareadas)."
                               )
                             )
            ),
            conditionalPanel(condition = "input.help_ho_2c == 6", 
                             div(
-                              h3("Histograma"),
+                              h3("Test de Homogeneidad de varianzas de Fisher"),
                               HTML(
-                                "Se presenta un histograma de frecuencias. La cantidad de 
-                                intervalos corresponde a la estimación otorgada por el 
-                                cálculo de Sturges. El usuario puede cambiar la cantidad 
-                                de intervalos. Los valores extremos de los intervalos pueden 
-                                ser abiertos o cerrados a elección del usuario.")
+                                "Test de Homogeneidad de varianzas de Fisher.")
                             )
            ),
            conditionalPanel(condition = "input.help_ho_2c == 7", 
                             div(
-                              h3("Dispersión"),
+                              h3("Test de Homogeneidad de varianzas de Bartlett"),
                               HTML(
-                                "Se presenta un gráfico donde todos los valores 
-                                de la variable están alineados y son representados por una 
-                                circunsferencia."
+                                "Test de Homogeneidad de varianzas de Bartlett."
                                 )
                             )
            ),
            conditionalPanel(condition = "input.help_ho_2c == 8", 
                             div(
-                              h3("Puntos"),
+                              h3("Test de Homogeneidad de varianzas de Levenne"),
                               HTML(
-                                "Se presenta un gráfico donde todos los valores 
-                                de la variable están alineados respecto al eje X, y 
-                                son apilados en la medida de su frecuencia."
+                                "Test de Homogeneidad de varianzas de Levenne."
                               )
                             )
            ),
+           conditionalPanel(condition = "input.help_ho_2c == 9", 
+                            div(
+                              h3("Test de Homogeneidad de varianzas de Levenne"),
+                              HTML(
+                                "Test de Homogeneidad de varianzas de Levenne."
+                              )
+                            )
+           ),
+           conditionalPanel(condition = "input.help_ho_2c == 10", 
+                            div(
+                              h3("Test de Regresión Logística Simple"),
+                              HTML(
+                                "Test de Regresión Logística Simple."
+                              )
+                            )
+           )
            )
            )
   

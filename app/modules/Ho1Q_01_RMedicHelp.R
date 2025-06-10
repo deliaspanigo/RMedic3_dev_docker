@@ -23,9 +23,9 @@ Ho1Q_01_RMedicHelp_UI <- function(id) {
                             div(
                               h3("RMedic Here!"),
                               HTML(
-                                "Los gráficos más utilizados aplicados a una variable categórica son:<br/>
-                      - Gráfico de <b>Barras</b>.<br/>
-                      - Gráfico de <b>Tortas</b>.<br/>
+                                "Las pruebas de hipótesis más utilizados aplicados a una variable categórica son:<br/>
+                      - <b>Test de proporciones</b>.<br/>
+                      - <b>Test de uniformidad</b>.<br/>
                       Seleccionando la ayuda de cada uno encontrarás un resumen con
                       detalles teóricos y estructura de la base de datos.<br/>
                       Estos te ayudarán a determinar si estas herramientas pueden ser
@@ -35,22 +35,17 @@ Ho1Q_01_RMedicHelp_UI <- function(id) {
            ),
            conditionalPanel(condition = "input.help_ho_1q == 2",
                             div(
-                              h3("Gráfico de Barras"),
+                              h3("Test de proporciones"),
                               HTML(
-                                "Se presenta un gráfico que manifiesta las categorías 
-                            de la variable en el eje X. La altura de las barras 
-                            representa las frecuencias de las categorías en el eje Y."
+                                "Cada una variable con al menos 2 categorías, es posible poner a prueba el valor de proporción de la categoría seleccionada."
                               )
                             )
            ),
            conditionalPanel(condition = "input.help_ho_1q == 3",
                             div(
-                              h3("Gráfico de Tortas"),
+                              h3("Test de Uniformidad"),
                               HTML(
-                                "Se presenta un gráfico que manifiesta las categorías 
-                            de una variable cualitativa como porciones de una torta.
-                            El tamaño de cada porción manifiesta la frecuencia de cada 
-                            categoría."
+                                "Se determina si dada una variable categórica todas las categorías presentes en dicha variable poseen la misma proporción o al menos una de ellas es diferente."
                               )
                             )
            ),

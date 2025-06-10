@@ -7,30 +7,24 @@ Ho1C_01_RMedicHelp_UI <- function(id) {
   
   fluidRow(
     column(4,
-           radioButtons(inputId = "help_graficos_1c",
+           radioButtons(inputId = "help_ho_1c",
                         label = h3("Selección de Ayuda Automática"),
                         choices = c("RMedic Here!" = 1,
-                                    "Media y Desvío Estándard" = 2,
-                                    "Media y Error Estándard" = 3,
-                                    "Boxplot" = 4,
-                                    "Violín plot" = 5,
-                                    "Histograma" = 6,
-                                    "Dispersión" = 7,
-                                    "Puntos" = 8)
+                                    "Test t (Una muestra)" = 2,
+                                    "Test de Wilcoxon (Una muestra)" = 3,
+                                    "Test Normalidad (Shapiro-Wilk)" = 4,
+                                    "Test Chi Cuadrado (Una muestra)" = 5)
            )),
     column(8,
-           conditionalPanel(condition = "input.help_graficos_1c == 1", 
+           conditionalPanel(condition = "input.help_ho_1c == 1", 
                             div(
                               h3("RMedic Here!"),
                               HTML(
                                 "Los gráficos más utilizados aplicados a una variable numérica son:<br/>
-                      - Gráfico de <b>Media y Desvío Estándard</b>.<br/>
-                      - Gráfico de <b>Media y Error Estándard</b>.<br/>
-                      - Gráfico de <b>Boxplot</b>.<br/>
-                      - Gráfico de <b>Violín</b>.<br/>
-                      - Gráfico de <b>Histograma</b>.<br/>
-                      - Gráfico de <b>Dispersión</b>.<br/>
-                      - Gráfico de <b>Puntos</b>.<br/>
+                      - <b>Test t (Una muestra)</b>.<br/>
+                      - <b>Test de Wilcoxon (Una muestra)</b>.<br/>
+                      - <b>Test Normalidad (Shapiro-Wilk)</b>.<br/>
+                      - <b>Test Chi Cuadrado (Una muestra)</b>.<br/>
                       Seleccionando la ayuda de cada uno encontrarás un resumen con
                       detalles teóricos y estructura de la base de datos.<br/>
                       Estos te ayudarán a determinar si estas herramientas pueden ser
@@ -38,82 +32,38 @@ Ho1C_01_RMedicHelp_UI <- function(id) {
                               )
                             )
                             ),
-           conditionalPanel(condition = "input.help_graficos_1c == 2", 
+           conditionalPanel(condition = "input.help_ho_1c == 2", 
                             div(
-                              h3("Gráfico de Medias y Desvío Estándard"),
+                              h3("Test t (Una muestra)"),
                               HTML(
-                                "Se presenta un gráfico donde se observa el valor
-                                de la media (promedio) y el intervalo de: 
-                                media más un desvío estándard, media menos un desvío estándard."
+                                "Se aplica sore una variable cuantitativa. Se realiza una prueba de hipótesis para determinar si la media muestras es igual o no a un valor particular de media poblacional definido por el operador."
                                 )
                               )
                             ),
-           conditionalPanel(condition = "input.help_graficos_1c == 3", 
+           conditionalPanel(condition = "input.help_ho_1c == 3", 
                             div(
-                              h3("Gráfico de Medias y Error Estándard"),
+                              h3("Test de Wilcoxon (Una muestra)"),
                               HTML(
-                                "Se presenta un gráfico donde se observa el valor
-                                de la media (promedio) y el intervalo de: 
-                                media más un error estándard, media menos un error estándard."
+                                "Se aplica sobre una variable cuantitativa u ordinal representada con números."
                                 )
                             )
            ),
-           conditionalPanel(condition = "input.help_graficos_1c == 4", 
+           conditionalPanel(condition = "input.help_ho_1c == 4", 
                             div(
-                              h3("Boxplot"),
+                              h3("Test Normalidad (Shapiro-Wilk)"),
                               HTML(
-                                "Se presenta un gráfico boxplot (caja) o también llamado 
-                                box & whisker plot (caja y bigote). La caja se extiende desde 
-                                el cuartilo 1 al cuartilo 3, los bigotes se extienden desde el 
-                                cuartilo 1 al mínimo y del cuartilo 3 al máximo. Dentro la caja 
-                                la mediana es detallada como una línea oscura."
+                                "Se aplica sobre una variable cuantitativa. Pone a prueba la hipótesis de que la variable seleccionada posee distribución normal."
                               )
                             )
            ),
-           conditionalPanel(condition = "input.help_graficos_1c == 5", 
+           conditionalPanel(condition = "input.help_ho_1c == 5", 
                             div(
-                              h3("Violín Plot"),
+                              h3("Test Chi Cuadrado (Una muestra)"),
                               HTML(
-                                "Se presenta un gráfico de violín. La caja negra interior 
-                                corresponde a la caja del boxplot. La mediana es presentada 
-                                como un punto blanco dentro de la caja. Simultáneamente 
-                                se grafica hacia los margenes laterales la distribución de 
-                                la variable. La silueta de la distribución llega hasta 
-                                el valor mínimo y máximo de la variable."
+                                "Test Chi Cuadrado (Una muestra)"
                               )
                             )
-           ),
-           conditionalPanel(condition = "input.help_graficos_1c == 6", 
-                            div(
-                              h3("Histograma"),
-                              HTML(
-                                "Se presenta un histograma de frecuencias. La cantidad de 
-                                intervalos corresponde a la estimación otorgada por el 
-                                cálculo de Sturges. El usuario puede cambiar la cantidad 
-                                de intervalos. Los valores extremos de los intervalos pueden 
-                                ser abiertos o cerrados a elección del usuario.")
-                            )
-           ),
-           conditionalPanel(condition = "input.help_graficos_1c == 7", 
-                            div(
-                              h3("Dispersión"),
-                              HTML(
-                                "Se presenta un gráfico donde todos los valores 
-                                de la variable están alineados y son representados por una 
-                                circunsferencia."
-                                )
-                            )
-           ),
-           conditionalPanel(condition = "input.help_graficos_1c == 8", 
-                            div(
-                              h3("Puntos"),
-                              HTML(
-                                "Se presenta un gráfico donde todos los valores 
-                                de la variable están alineados respecto al eje X, y 
-                                son apilados en la medida de su frecuencia."
-                              )
-                            )
-           ),
+           )
            )
            )
   

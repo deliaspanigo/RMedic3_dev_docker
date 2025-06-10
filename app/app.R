@@ -243,7 +243,7 @@ ui <- shiny::navbarPage(inverse=TRUE,
         "))
                         ),   
                         
-                        title = strong("RMedic 3.1.6"),
+                        title = strong("RMedic 3.1.7"),
                         windowTitle = "RMedic - Medicina y R", 
                         fluid = TRUE, 
                         header = column(12, ""),
@@ -398,3 +398,4 @@ options(shiny.host = "0.0.0.0")
 
 # Ejecutar la aplicación Shiny
 shinyApp(ui = ui, server = server)
+

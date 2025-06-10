@@ -18,7 +18,7 @@ Ho1Q_SERVER <- function(input, output, session,
                               decimales,
                               alfa, batalla_naval) {
   
-  observe({print("ADENTRO! de Ho1Q_SERVER!!!")})
+  # observe({print("ADENTRO! de Ho1Q_SERVER!!!")})
   
   
   # NameSpaceasing for the session
