@@ -243,17 +243,19 @@ ui <- shiny::navbarPage(inverse=TRUE,
         "))
                         ),   
                         
-                        title = strong("RMedic 3.1.7"),
+                        title = strong("RMedic 3.2.0"),
                         windowTitle = "RMedic - Medicina y R", 
                         fluid = TRUE, 
                         header = column(12, ""),
                         footer = column(12,
                                         div(id = "footer",
+                                            style = "text-align: center;",  # Este line centra todo el contenido
                                             a("Consultoría Bioestadística de la Salud"), br(),
                                             "Contacto: ", a("d.eliaspanigo@gmail.com"),
                                             br(),
                                             HTML('&copy; David Elías Panigo (2016)')
                                         )
+                                        
                         ),
                         id = "nav",
                         

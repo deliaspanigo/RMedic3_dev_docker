@@ -82,7 +82,7 @@ module_action002_show_database_server <- function(id, output_list_database){
         
         DT::datatable(
           mi_tabla, colnames = new_col_names,
-          filter = 'top',
+          # filter = 'top',
           options = list(
             autowidth = TRUE,
             order = list(list(0, 'asc')),
