@@ -2,7 +2,7 @@
 # # #
 # # #
 # remotes::install_github("RinteRface/fullPage")
-library(fullPage)
+# library(fullPage)
 library(shiny)
 library(future)
 library(promises)
@@ -249,7 +249,7 @@ ui <- shiny::navbarPage(inverse=TRUE,
         "))
                         ),   
                         
-                        title = strong("RMedic 3.2.1"),
+                        title = strong("RMedic 3.2.2"),
                         windowTitle = "RMedic - Medicina y R", 
                         fluid = TRUE, 
                         # header = column(12, ""),

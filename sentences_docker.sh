@@ -9,13 +9,13 @@
 
 
 # Build the Docker image with the name 'my_docker_image'
-docker build -t legion949/dk_rmedic3_dev_img:3.2.0 .
+docker build -t legion949/dk_rmedic3_dev_img:3.2.1 .
 
-docker run --name dk_rmedic3_dev_container -p 3838:3838 --rm legion949/dk_rmedic3_dev_img:3.2.0
+docker run --name dk_rmedic3_dev_container -p 3838:3838 --rm legion949/dk_rmedic3_dev_img:3.2.1
 
 
 # Run the Docker container with the name 'my_docker_container'
-docker run --name dk_rmedic3_dev_container -p 3838:3838 --rm -d legion949/dk_rmedic3_dev_img:3.2.0
+docker run --name dk_rmedic3_dev_container -p 3838:3838 --rm -d legion949/dk_rmedic3_dev_img:3.2.1
 
 # Run the Docker container with the name 'my_docker_container' and mount the local directory 'example-app' to the container directory '/app'
 docker run --name dk_rmedic3_dev_container -v $(pwd)/app:/app -p 3838:3838 --rm -d legion949/dk_rmedic3_dev_img:3.2.0
