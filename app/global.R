@@ -5,6 +5,9 @@
 options(encoding = "UTF-8")
 options(shiny.maxRequestSize = 500*1024^2)
 
+# remotes::install_github("RinteRface/fullPage")
+library(fullPage)
+
 library("colourpicker")
 library("shinycssloaders")
 library(shiny)

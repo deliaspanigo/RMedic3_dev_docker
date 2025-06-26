@@ -1,12 +1,18 @@
 # # # 
 # # #
 # # #
+# remotes::install_github("RinteRface/fullPage")
+library(fullPage)
 library(shiny)
 library(future)
 library(promises)
 library(bslib)
 library(bsicons)
 library(shinyWidgets)
+library(fontawesome)
+library(shiny)
+library(bslib)
+library("glue")
 # Configura el plan de futuro para usar múltiples trabajadores
 # plan(multisession)
 
@@ -243,27 +249,47 @@ ui <- shiny::navbarPage(inverse=TRUE,
         "))
                         ),   
                         
-                        title = strong("RMedic 3.2.0"),
+                        title = strong("RMedic 3.2.1"),
                         windowTitle = "RMedic - Medicina y R", 
                         fluid = TRUE, 
-                        header = column(12, ""),
+                        # header = column(12, ""),
                         footer = column(12,
-                                        div(id = "footer",
-                                            style = "text-align: center;",  # Este line centra todo el contenido
-                                            a("Consultoría Bioestadística de la Salud"), br(),
-                                            "Contacto: ", a("d.eliaspanigo@gmail.com"),
-                                            br(),
-                                            HTML('&copy; David Elías Panigo (2016)')
-                                        )
+                                        br(), br(),
+                                        # Botón de donaciones de PayPal
+                                        div( id = "footer",
+                                             style = "text-align: center;",
+                                          tags$img(src = "logo_01_unc_master.png", height = "30px"),  # Imagen
+                                          tags$img(src = "logo_02_fcefyn_master.png", height = "30px"),  # Imagen
+                                          tags$img(src = "logo_03_efadoc_master.png", height = "30px"),  # Imagen
+                                          tags$img(src = "logo_04_rscience_master.png", height = "30px"),  # Imagen,
+                                          tags$img(src = "logo_05_UNT_master.png", height = "30px"),  # Imagen
+                                          tags$img(src = "logo_06_CONICET_master.png", height = "30px"),  # Imagen
+                                          tags$img(src = "logo_07_GULICH_master.png", height = "30px"),
+                                          tags$img(src = "logo_08_NASA_master.png", height = "30px"),
+                                          tags$img(src = "logo_09_UTN_master.png", height = "30px"),
+                                          tags$img(src = "logo_10_INTA_master.png", height = "30px"),
+                                          tags$img(src = "logo_11_CONAE_master.png", height = "30px"),
+                                          tags$img(src = "logo_12_YPF_master.png", height = "30px"),
+                                          tags$img(src = "logo_13_GOOGLE_master.png", height = "30px"),
+                                          tags$img(src = "logo_14_OMS_master.png", height = "30px"),
+                                          
+                                        ),
+                                        br(), 
+                                        
+                                        div(style = "text-align: center;", HTML('&copy; RMedic (2016)'))
                                         
                         ),
                         id = "nav",
                         
+                      
                         
-                        
-                        shiny::tabPanel(title = "Inicio", icon = icon("house"), module_opt01_home_UI("opt01_home")),
+                        shiny::tabPanel(title = "Inicio", icon = icon("house"), module_opt01_home2_UI("opt01_home")),
                         shiny::tabPanel(title = "RMedic", module_opt02_soft_UI("opt02_soft")),
-                        shiny::tabPanel(title = "Herramientas", source("tabs/HerramientasTab.R", encoding = "UTF-8")$value)
+                        shiny::tabPanel(title = "Herramientas", source("tabs/HerramientasTab.R", encoding = "UTF-8")$value),
+                        shiny::tabPanel(title = "Cita", module_opt04_cita_UI("opt04_cita")),
+                        shiny::tabPanel(title = "Contacto", module_opt05_contacto_UI("opt05_contacto")),
+                        shiny::tabPanel(title = "Quiénes somos?", module_opt99_who_UI(id = "who99")),
+                        shiny::tabPanel(title = "Donar", module_opt06_donar_UI(id = "donar"))
 )
 
 
@@ -274,7 +300,14 @@ server <- function(input, output, session) {
   
   # # # Section 01 - User Location  # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   
-  
+  observeEvent(input$donateButton, {
+    # URL de PayPal (reemplaza con tu URL de donaciones)
+    paypal_url <- "https://www.paypal.com/donate?hosted_button_id=TUVRWUQYUL7B8"
+    
+    # Redirigir al usuario a la página de PayPal
+    js_code <- paste0("window.open('", paypal_url, "', '_blank');")
+    runjs(js_code)
+  })
   # User location
   user_location <- get_user_location()
   
@@ -301,14 +334,24 @@ server <- function(input, output, session) {
   # # # Server Modules 01
   
   # 01 - Homepage
-  module_opt01_home_SERVER("opt01_home")
+  module_opt01_home2_SERVER("opt01_home")
   
   # 02 - RMedic Software
   module_opt02_soft_SERVER("opt02_soft")
   
   # 03 - Tools
   
+  # 04 - Cita
+  module_opt04_cita_SERVER("opt04_cita")
   
+  # 05 - Contacto
+  module_opt05_contacto_SERVER("opt05_contacto")
+  
+  # 99 - who
+  module_opt99_who_SERVER(id = "who99")
+  
+  # 06 - Donar
+  module_opt06_donar_SERVER(id = "donar")
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
   
 
