@@ -33,7 +33,7 @@ module_act001_s05_UCC_01_settings_server <- function(id, sui_data_source){
       output$"carrera_selector" <- renderUI({
         req(check_ok())
         vector_opt <- c("Medicina" = "MD", 
-                        "Nutrición" =  "NT")
+                        "Odontología" =  "ODT")
         
         vector_opt <- c("Seleccione..." = "", vector_opt)
         

@@ -249,7 +249,7 @@ ui <- shiny::navbarPage(inverse=TRUE,
         "))
                         ),   
                         
-                        title = strong("RMedic 3.2.2"),
+                        title = strong("RMedic 3.2.3"),
                         windowTitle = "RMedic - Medicina y R", 
                         fluid = TRUE, 
                         # header = column(12, ""),
