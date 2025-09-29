@@ -21,7 +21,7 @@ Ho1Q_01_RMedicHelp_UI <- function(id) {
            br(),
            conditionalPanel(condition = "input.help_ho_1q == 1",
                             div(
-                              h3("RMedic Here!"),
+                              h3_mod("RMedic Here!"),
                               HTML(
                                 "Las pruebas de hipótesis más utilizados aplicados a una variable categórica son:<br/>
                       - <b>Test de proporciones</b>.<br/>
@@ -35,18 +35,45 @@ Ho1Q_01_RMedicHelp_UI <- function(id) {
            ),
            conditionalPanel(condition = "input.help_ho_1q == 2",
                             div(
-                              h3("Test de proporciones"),
+                              h3_mod("Test de proporciones"),
                               HTML(
-                                "Cada una variable con al menos 2 categorías, es posible poner a prueba el valor de proporción de la categoría seleccionada."
+                                "Se aplica sobre una columna de la base de datos.<br>
+                                La variable debe tener solo dos categorías.<br>
+                                De las dos categorías presentes en la variable se selecciona una de interés.
+                                De esta categoría se calcula el valor de proporción respecto al total de datos (proporción observada). <br>
+                                Debe elegirse un valor de proporción poblacional bajo hipótesis (proporción esperada).<br>
+                                Plantea si la proporción observada de la categoría seleccionada es igual al valor elegido de proporción esperada (bajo hipótesis)."                               ),
+                              h3_mod("Juego de Hipótesis"),
+                              "Hay tres formas de generar hipótesis en el test de proporciones para una muestra.",
+                              br(), br(),
+                              HTML("<u><b>Prueba Bilateral</u></b><br>
+                              <u><b>Hipótesis Nula (Ho):</b></u> La diferencia de proporciones es igual a cero. <br>
+                              <u><b>Hipótesis Alternativa (Hi):</b></u> La diferencia de proporciones es distinta de cero.<br>"
+                              ),br(), br(),
+                              HTML("<u><b>Prueba Unilateral Izquierda</b></u><br>
+                              <u><b>Hipótesis Nula (Ho):</b></u> La proporción de la categoría seleccionada es igual o mayor al valor elegido. <br>
+                              <u><b>Hipótesis Alternativa (Hi):</b></u> La proporción de la categoría seleccionada es menor al valor elegido.<br>"
+                              ),br(), br(),
+                              HTML("<u><b>Prueba Unilateral Derecha</b></u><br>
+                              <u><b>Hipótesis Nula (Ho):</b></u> La proporción de la categoría seleccionada es igual o menor al valor elegido. <br>
+                              <u><b>Hipótesis Alternativa (Hi):</b></u> La proporción de la categoría seleccionada es mayor al valor elegido.<br>"
                               )
+                             
                             )
            ),
            conditionalPanel(condition = "input.help_ho_1q == 3",
                             div(
-                              h3("Test de Uniformidad"),
+                              h3_mod("Test de Uniformidad"),
                               HTML(
-                                "Se determina si dada una variable categórica todas las categorías presentes en dicha variable poseen la misma proporción o al menos una de ellas es diferente."
-                              )
+                              "Se aplica sobre una columna de la base de datos.<br>
+                              La variable debe tener al menos dos categorías.<br>
+                              Plantea si todas las categorías de la variable poseen la misma frecuencia.<br>
+                              En otras palabras plantea si todas las categorías de la variable poseen la misma proporción.<br>"),
+                              h3_mod("Juego de Hipótesis"),
+                              HTML("
+                              <u><b>Hipótesis Nula (Ho):</u></b> Las frecuencias de todas las categorías son iguales. <br>
+                              <u><b>Hipótesis Alternativa (Hi):</u></b> Al menos una categoría presenta una frecuencia diferente.<br>"
+                              ),br(), br()
                             )
            ),
     )

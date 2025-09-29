@@ -48,7 +48,7 @@ module_elegant_cards_UI <- function(id) {
           div(
             class = "card-header-custom",
             fa_i("gem", fill = "currentColor", class = "card-icon"),
-            "RMedic"
+            "Statistical Computing Enviroment (SCE)"
           ),
           style = "background: linear-gradient(135deg, #6e8efb, #4287f5);
                   color: white;
@@ -62,8 +62,8 @@ module_elegant_cards_UI <- function(id) {
                 border: 2px solid #4287f5; /* Más ancho y color */
                 border-radius: 20px;
                 box-shadow: 0 8px 16px rgba(66, 135, 245, 0.3);",
-        p(class = "content-paragraph", "Asesor estadístico automatizado para el análisis de datos médicos."),
-        p(class = "content-paragraph", "Estandarización en el proceso de análsis estadísticos e interpretación.")
+        p(class = "content-paragraph", "Entorno computacional estadístico estandarizado, basado en R."),
+        p(class = "content-paragraph", "Versión estable y standard de librerías y funciones estadísticas.")
       ),
       
       # Tarjeta 2
@@ -75,7 +75,7 @@ module_elegant_cards_UI <- function(id) {
           div(
             class = "card-header-custom",
             fa_i("leaf", fill = "currentColor", class = "card-icon"),
-            "Data Análisis"
+            "Clinical Reporting"
           ),
           style = "background: linear-gradient(135deg, #56ab2f, #42f565);
                   color: white;
@@ -89,8 +89,8 @@ module_elegant_cards_UI <- function(id) {
                 border: 2px solid #42f565; /* Más ancho y color */
                 border-radius: 20px;
                 box-shadow: 0 8px 16px rgba(66, 245, 101, 0.3);",
-        p(class = "content-paragraph", "Estandarización en el proceso de análsis."),
-        p(class = "content-paragraph", "Facilidades para la obtención de tablas, gráficos, análisis estadísticos e interpretación.")
+        p(class = "content-paragraph", "Estandarización en el proceso de análisis y toma de decisiones."),
+        p(class = "content-paragraph", "Estandarización del contenido asociado (tablas y gráficos).")
       ),
       
       # Tarjeta 3
@@ -102,7 +102,7 @@ module_elegant_cards_UI <- function(id) {
           div(
             class = "card-header-custom",
             fa_i("bolt", fill = "currentColor", class = "card-icon"),
-            "Servicios"
+            "User friedly"
           ),
           style = "background: linear-gradient(135deg, #ffb347, #f5d742);
                   color: white;
@@ -116,8 +116,8 @@ module_elegant_cards_UI <- function(id) {
                 border: 2px solid #f5d742; /* Más ancho y color */
                 border-radius: 20px;
                 box-shadow: 0 8px 16px rgba(245, 215, 66, 0.3);",
-        p(class = "content-paragraph", ""),
-        p(class = "content-paragraph", "Monitoreo proactivo del rendimiento y ajuste automático de recursos.")
+        p(class = "content-paragraph", "Innovador entorno de interacción con el usuario."),
+        p(class = "content-paragraph", "Facilidades para la obtención de tablas, gráficos, análisis estadísticos e interpretación.")
       )
     )
   )

@@ -258,20 +258,10 @@ ui <- shiny::navbarPage(inverse=TRUE,
                                         # Botón de donaciones de PayPal
                                         div( id = "footer",
                                              style = "text-align: center;",
-                                          tags$img(src = "logo_01_unc_master.png", height = "30px"),  # Imagen
-                                          tags$img(src = "logo_02_fcefyn_master.png", height = "30px"),  # Imagen
-                                          tags$img(src = "logo_03_efadoc_master.png", height = "30px"),  # Imagen
-                                          tags$img(src = "logo_04_rscience_master.png", height = "30px"),  # Imagen,
-                                          tags$img(src = "logo_05_UNT_master.png", height = "30px"),  # Imagen
-                                          tags$img(src = "logo_06_CONICET_master.png", height = "30px"),  # Imagen
-                                          tags$img(src = "logo_07_GULICH_master.png", height = "30px"),
-                                          tags$img(src = "logo_08_NASA_master.png", height = "30px"),
-                                          tags$img(src = "logo_09_UTN_master.png", height = "30px"),
-                                          tags$img(src = "logo_10_INTA_master.png", height = "30px"),
-                                          tags$img(src = "logo_11_CONAE_master.png", height = "30px"),
-                                          tags$img(src = "logo_12_YPF_master.png", height = "30px"),
-                                          tags$img(src = "logo_13_GOOGLE_master.png", height = "30px"),
-                                          tags$img(src = "logo_14_OMS_master.png", height = "30px"),
+                                          tags$img(src = "rmediclogo.png", height = "50px"),  # Imagen
+                                          #tags$img(src = "img01_ucc.png", height = "30px"),  # Imagen
+                                          #tags$img(src = "img02_ucc_salud.png", height = "30px"),  # Imagen
+                                          #tags$img(src = "img03_reina_2025.png", height = "30px"),  # Imagen
                                           
                                         ),
                                         br(), 
@@ -288,8 +278,8 @@ ui <- shiny::navbarPage(inverse=TRUE,
                         shiny::tabPanel(title = "Herramientas", source("tabs/HerramientasTab.R", encoding = "UTF-8")$value),
                         shiny::tabPanel(title = "Cita", module_opt04_cita_UI("opt04_cita")),
                         shiny::tabPanel(title = "Contacto", module_opt05_contacto_UI("opt05_contacto")),
-                        shiny::tabPanel(title = "Quiénes somos?", module_opt99_who_UI(id = "who99")),
-                        shiny::tabPanel(title = "Donar", module_opt06_donar_UI(id = "donar"))
+                        shiny::tabPanel(title = "Quiénes somos?", module_opt99_who_UI(id = "who99"))#,
+                        #shiny::tabPanel(title = "Donar", module_opt06_donar_UI(id = "donar"))
 )
 
 

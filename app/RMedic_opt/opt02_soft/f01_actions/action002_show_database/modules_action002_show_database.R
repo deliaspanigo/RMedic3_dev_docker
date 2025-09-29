@@ -155,10 +155,10 @@ module_action002_show_database_server <- function(id, output_list_database){
                          tags$h4("No hay base de datos cargada"),
                          tags$p("Por favor, cargue una base de datos para visualizarla aquí."),
                          tags$br(),
-                         tags$img(src = "png/img_02_UCC.png", width = "150px", style = "opacity: 0.5;"),
+                         # tags$img(src = "png/img_02_UCC.png", width = "150px", style = "opacity: 0.5;"),
                          
                          tags$img(src = "png/img_01_RMedic.png", width = "150px", style = "opacity: 0.5;"),
-                         tags$img(src = "png/img_03_ENIAX.png", width = "150px", style = "opacity: 0.5;"),
+                         # tags$img(src = "png/img_03_ENIAX.png", width = "150px", style = "opacity: 0.5;"),
                          
                        )
                      )

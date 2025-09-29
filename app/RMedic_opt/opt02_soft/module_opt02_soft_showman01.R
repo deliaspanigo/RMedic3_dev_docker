@@ -5,16 +5,16 @@ module_opt02_soft_UI <- function(id) {
   
   div(
     
-    titlePanel("R+Medic"),
-    div(style = "text-align: center;",
-        div(style = "display: inline-block; margin: 0;",
-            img(src = "png/img_02_UCC.png", width = "150px", style = "opacity: 1;")),
-        div(style = "display: inline-block; margin: 0;",
-            img(src = "png/img_01_RMedic.png", width = "150px", style = "opacity: 1;")),
-        div(style = "display: inline-block; margin: 0;",
-            img(src = "png/img_03_ENIAX.png", width = "150px", style = "opacity: 1;"))
-    ),
-    br(), br(),
+    # titlePanel("R+Medic"),
+    # div(style = "text-align: center;",
+    #     div(style = "display: inline-block; margin: 0;",
+    #         img(src = "png/img_02_UCC.png", width = "150px", style = "opacity: 1;")),
+    #     div(style = "display: inline-block; margin: 0;",
+    #         img(src = "png/img_01_RMedic.png", width = "150px", style = "opacity: 1;")),
+    #     div(style = "display: inline-block; margin: 0;",
+    #         img(src = "png/img_03_ENIAX.png", width = "150px", style = "opacity: 1;"))
+    # ),
+    # br(), br(),
     fluidRow(
       column(2, class = "text-center",
              shinyBS::bsButton(ns("showpanel"), "", 

@@ -1,48 +1,85 @@
 module_opt04_cita_UI <- function(id) {
   ns <- NS(id)
-
   
-    div(
-      tagList(
-        tags$head(
-          tags$script(type="text/javascript", src = "busy.js"),
-          tags$link(rel="shortcut icon", href="./rmediclogo.jpg"),
-          tags$script(type="text/javascript", "var switchTo5x=true"),
-          tags$script(type="text/javascript",'stLight.options({publisher: "675b3562-a081-470a-9fc4-3dd6a712209d", doNotHash: true, doNotCopy: true, hashAddressBar: false})')
+  div(
+    tagList(
+      tags$head(
+        tags$script(type="text/javascript", src = "busy.js"),
+        tags$link(rel="shortcut icon", href="./rmediclogo.jpg"),
+        tags$script(type="text/javascript", "var switchTo5x=true"),
+        tags$script(
+          type="text/javascript",
+          'stLight.options({
+             publisher: "675b3562-a081-470a-9fc4-3dd6a712209d",
+             doNotHash: true, doNotCopy: true, hashAddressBar: false
+          })'
         )
-      ),
-      div(id = ns("home"),
-          br(),
-          fluidRow(
-            column(3, img(src = "rmediclogo.jpg", width = 300, height = 300)),
-            column(9, div(
-              h4(class = "outer", "¿Puedo usar RMedic para los resultados de mis publicaciones?"),
-              p(class = "outer", strong("Claro que si!"), br(),
-                'Si lo haces, debes:',
-                tags$ol(
-                  tags$li('Incluir en "Materiales y Métodos" a ', strong("R-Medic"), 'como software estadístico:'),
-                  tags$li('Citar en tu "Bibliografía" textualmente la siguiente frase: ', h4(class = "outer", strong('Mangeaud A , Elías Panigo DH. 2018  R-Medic. Un programa de análisis estadísticos sencillo e intuitivo. Revista Methodo 3 (1) 18-22.')))
-                ),
-                a("Archivo para citar RMedic", target="_blank", href="RMedic_Cita.pdf")
-              )
-            )
-            )
+      )
+    ),
+    
+    div(
+      id = ns("home"),
+      style = "padding: 40px;",
+      
+      fluidRow(
+        column(
+          3,
+          img(src = "rmediclogo.jpg", width = 180, height = 180,
+              class = "mx-auto d-block mb-3 rounded-circle shadow")
+        ),
+        
+        column(
+          9,
+          div(
+            class = "card shadow-lg p-4 rounded",
+            style = "background:#fafafa; border-left:6px solid #ffffff;",
+            
+            # Título
+            h4("¿Puedo usar RMedic para los resultados de mis publicaciones?",
+               style="color:#0d47a1; font-weight:bold;"),
+            
+            # Texto principal
+            p(strong("¡Claro que sí!"), " Si lo haces, debes:"),
+            
+            # Lista con íconos
+            tags$ul(
+              style="list-style-type:none; padding-left:0;",
+              tags$li(icon("check", class="text-success"),
+                      " Incluir en 'Materiales y Métodos' a ",
+                      strong("RMedic"), " como software estadístico."),
+              tags$li(icon("check", class="text-success"),
+                      " Citar en tu 'Bibliografía' la siguiente referencia:")
+            ),
+            
+            # Cita en bloque estilizado
+            tags$blockquote(
+              style="background:#eef3fb; padding:15px; margin:10px 0; 
+                     border-left:5px solid #ffffff; font-style:normal;",
+              strong("Mangeaud A, Elías Panigo DH. 2018. "),
+              em("R-Medic. Un programa de análisis estadísticos sencillo e intuitivo."),
+              " Revista Methodo 3(1): 18-22."
+            ),
+            
+            # Botón PDF
+            a("📄 Descargar archivo de cita (PDF)",
+              href = "RMedic_Cita.pdf",
+              target = "_blank",
+              class = "btn btn-primary mt-2",
+              style="text-decoration:none;")
           )
-          
-         
+        )
       )
     )
-
+  )
 }
 
 
 
 module_opt04_cita_SERVER <- function(id) {
   moduleServer(id, function(input, output, session) {
-   
-    output$"super01" <- renderUI({
-      
-    })
+    
+    ns <- session$ns
+    
     
   })
 }

@@ -2,9 +2,9 @@
 
 # tabPanel(title = "RMedic",
 div(
-  titlePanel("R+Medic"),
-  
-  br(), br(),
+  # titlePanel("R+Medic"),
+  # 
+  # br(), br(),
   selectInput(inputId = "selector_general",
               label = h2("Lista de Herramientas"), 
               choices = c("Distribución de Probabilidades" = "opc01",

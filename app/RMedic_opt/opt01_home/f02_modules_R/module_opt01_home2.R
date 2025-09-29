@@ -13,7 +13,13 @@ module_opt01_home2_UI <- function(id) {
       ),
       div(id = ns("home"),
           br(),
-          fluidRow(column(3, img(src = "rmediclogo.png", width = "300", height = "300")),
+          div(
+            style = "text-align: center;",
+          fluidRow(
+            column(3, img(src = "rmediclogo.png", width = "300", height = "300"),
+                       br(),
+                       tags$a(fa_i("linkedin"), href = "https://www.linkedin.com/company/r-medic/", class = "social-icon", style="font-size: 4em;"),
+          ),
                    column(9, br(), br(),
                           div(tags$head(
                             tags$style(HTML("
@@ -25,8 +31,7 @@ module_opt01_home2_UI <- function(id) {
       .carousel {
         display: inline-block;
         white-space: nowrap;
-        animation: moveSlideshow 60s linear infinite;
-      }
+        animation: moveSlideshow 15s linear infinite; /* antes 60s */      }
       .carousel img {
         display: inline-block;
         height: 250px;
@@ -46,40 +51,30 @@ module_opt01_home2_UI <- function(id) {
                           class = "carousel-container",
                               div(class = "carousel",
                                   # Primer conjunto de imágenes
-                                  tags$img(src = "logo_01_unc_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_02_fcefyn_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_03_efadoc_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_04_rscience_master.png", height = "10%"),  # Imagen,
-                                  tags$img(src = "logo_05_UNT_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_06_CONICET_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_07_GULICH_master.png", height = "10%"),
-                                  tags$img(src = "logo_08_NASA_master.png", height = "10%"),
-                                  tags$img(src = "logo_09_UTN_master.png", height = "10%"),
-                                  tags$img(src = "logo_10_INTA_master.png", height = "10%"),
-                                  tags$img(src = "logo_11_CONAE_master.png", height = "10%"),
-                                  tags$img(src = "logo_12_YPF_master.png", height = "10%"),
-                                  tags$img(src = "logo_13_GOOGLE_master.png", height = "10%"),
-                                  tags$img(src = "logo_14_OMS_master.png", height = "10%"),
+                                  tags$img(src = "img01_ucc.png", height = "10%"),  # Imagen
+                                  tags$img(src = "img02_ucc_salud.png", height = "10%"),  # Imagen
+                                  tags$img(src = "img03_reina_2025.png", height = "10%"),  # Imagen,
                                   
                                   
                                   # Segundo conjunto de imágenes (duplicado)
-                                  tags$img(src = "logo_01_unc_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_02_fcefyn_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_03_efadoc_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_04_rscience_master.png", height = "10%"),  # Imagen,
-                                  tags$img(src = "logo_05_UNT_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_06_CONICET_master.png", height = "10%"),  # Imagen
-                                  tags$img(src = "logo_07_GULICH_master.png", height = "10%"),
-                                  tags$img(src = "logo_08_NASA_master.png", height = "10%"),
-                                  tags$img(src = "logo_09_UTN_master.png", height = "10%"),
-                                  tags$img(src = "logo_10_INTA_master.png", height = "10%"),
-                                  tags$img(src = "logo_11_CONAE_master.png", height = "10%"),
-                                  tags$img(src = "logo_12_YPF_master.png", height = "10%"),
-                                  tags$img(src = "logo_13_GOOGLE_master.png", height = "10%"),
-                                  tags$img(src = "logo_14_OMS_master.png", height = "10%")
+                                  # tags$img(src = "logo_01_unc_master.png", height = "10%"),  # Imagen
+                                  # tags$img(src = "logo_02_fcefyn_master.png", height = "10%"),  # Imagen
+                                  # tags$img(src = "logo_03_efadoc_master.png", height = "10%"),  # Imagen
+                                  # tags$img(src = "logo_04_rscience_master.png", height = "10%"),  # Imagen,
+                                  # tags$img(src = "logo_05_UNT_master.png", height = "10%"),  # Imagen
+                                  # tags$img(src = "logo_06_CONICET_master.png", height = "10%"),  # Imagen
+                                  # tags$img(src = "logo_07_GULICH_master.png", height = "10%"),
+                                  # tags$img(src = "logo_08_NASA_master.png", height = "10%"),
+                                  # tags$img(src = "logo_09_UTN_master.png", height = "10%"),
+                                  # tags$img(src = "logo_10_INTA_master.png", height = "10%"),
+                                  # tags$img(src = "logo_11_CONAE_master.png", height = "10%"),
+                                  # tags$img(src = "logo_12_YPF_master.png", height = "10%"),
+                                  # tags$img(src = "logo_13_GOOGLE_master.png", height = "10%"),
+                                  # tags$img(src = "logo_14_OMS_master.png", height = "10%")
                                   
                               )
                           ))
+          )
           ),
           # fluidRow(),
           # fluidRow(),
