@@ -51,7 +51,25 @@ module_opt04_cita_UI <- function(id) {
                       " Citar en tu 'Bibliografía' la siguiente referencia:")
             ),
             
+            h3_mod("Materiales y Métodos - RMedic"),
+            
+            tags$blockquote(
+              style="background:#eef3fb; padding:15px; margin:10px 0; 
+                     border-left:5px solid #ffffff; font-style:normal;",
+              
+            "Se utilizó el software estadístico RMedic versión 3.2.4 para todas las tablas, gráficos y análisis estadísticos."
+            ),
+            tags$button(
+              id = "copy_btn04",
+              class = "btn btn-outline-primary",
+              icon("clipboard"), "Copiar Materiales y Métodos - RMedic",
+              onclick = "navigator.clipboard.writeText(Se utilizó el software estadístico RMedic versión 3.2.4 para todas las tablas, gráficos y análisis estadísticos.'); alert('Texto copiado: Materiales y Métodos - RMedic');"
+            ),
+            br(),
+            
             # Cita en bloque estilizado
+            h3_mod("Cita Appa 7ma"),
+           
             tags$blockquote(
               style="background:#eef3fb; padding:15px; margin:10px 0; 
                      border-left:5px solid #ffffff; font-style:normal;",
@@ -59,9 +77,33 @@ module_opt04_cita_UI <- function(id) {
               em("R-Medic. Un programa de análisis estadísticos sencillo e intuitivo."),
               " Revista Methodo 3(1): 18-22."
             ),
+            tags$button(
+              id = "copy_btn",
+              class = "btn btn-outline-primary",
+              icon("clipboard"), "Copiar Cita Appa - RMedic",
+              onclick = "navigator.clipboard.writeText('Mangeaud A, Elías Panigo DH. 2018. R-Medic. Un programa de análisis estadísticos sencillo e intuitivo. Revista Methodo 3(1): 18-22.'); alert('Texto copiado: Cita Appa 7ma - RMedic');"
+            ),
+            br(),
             
+            h3_mod("Cita Vancuver"),
+            
+            tags$blockquote(
+              style="background:#eef3fb; padding:15px; margin:10px 0; 
+                     border-left:5px solid #ffffff; font-style:normal;",
+              strong("Mangeaud A, Elías Panigo DH. (2018) "),
+              em("R-Medic. Un programa de análisis estadísticos sencillo e intuitivo."),
+              " Revista Methodo 3(1): 18-22."
+            ),
+            tags$button(
+              id = "copy_btn02",
+              class = "btn btn-outline-primary",
+              icon("clipboard"), "Copiar Cita Vancuver - RMedic",
+              onclick = "navigator.clipboard.writeText('Mangeaud A, Elías Panigo DH. (2018). R-Medic. Un programa de análisis estadísticos sencillo e intuitivo. Revista Methodo 3(1): 18-22.'); alert('Texto copiado: Cita Vancuver - RMedic');"
+            ),
             # Botón PDF
-            a("📄 Descargar archivo de cita (PDF)",
+            br(),
+            h3_mod("Descargar artículo"),
+            a("📄 Descargar artículo (PDF)",
               href = "RMedic_Cita.pdf",
               target = "_blank",
               class = "btn btn-primary mt-2",
@@ -75,12 +117,6 @@ module_opt04_cita_UI <- function(id) {
 
 
 
-module_opt04_cita_SERVER <- function(id) {
-  moduleServer(id, function(input, output, session) {
-    
-    ns <- session$ns
-    
-    
-  })
-}
 
+
+module_opt04_cita_SERVER <- function(id){}

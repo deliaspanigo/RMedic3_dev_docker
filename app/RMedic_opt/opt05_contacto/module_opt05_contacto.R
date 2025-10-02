@@ -41,7 +41,8 @@ module_opt05_contacto_UI <- function(id) {
           icon("linkedin", class = "fa-2x"),
           href = "https://www.linkedin.com/company/r-medic/",
           target = "_blank",
-          style = "color:white; margin:0 15px;"
+          style = "color:white; margin:0 15px;",
+          style="font-size: 4em;"
         )#,
         # tags$a(
         #   icon("github", class = "fa-2x"),

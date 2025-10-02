@@ -6379,8 +6379,9 @@ Test_QC_TestAnova1Factor <- function(input_base = NULL,
         
         valores_p_mod[k] <- "<0.001"
         
-      } else valores_p_mod[k] <- round2(as.numeric(as.character(valores_p_mod[k])), input_decimales)
-      
+     # } else valores_p_mod[k] <- round2(as.numeric(as.character(valores_p_mod[k])), input_decimales)
+     } else valores_p_mod[k] <- round2(as.numeric(as.character(valores_p_mod[k])), 4) # 2025
+
       
     }
     tabla_lsd2[,3] <- valores_p_mod
@@ -6447,7 +6448,10 @@ Test_QC_TestAnova1Factor <- function(input_base = NULL,
   
   # Valor p 
   valor_p_interno <- as.numeric(as.character(tabla_anova_interna[1,6]))
-  valor_p_externo <- round2(valor_p_interno, input_decimales)
+  
+  #valor_p_externo <- round2(valor_p_interno, input_decimales)
+  valor_p_externo <- round2(valor_p_interno, 4) # 2025
+  
   if (valor_p_interno < 0.001) valor_p_externo <- "<0.001"
   
   
@@ -7038,24 +7042,24 @@ Test_QC_TestKruskalWallis <- function(input_base = NULL,
   # Frase por inconvenientes de redondeo
   {
     
-  dt1 <- valor_p_interno < input_alfa
-  dt2 <- round2(valor_p_interno, input_decimales) < input_alfa
-  if (sum(dt1, dt2) == 2) frase_redondeo <- "" else
-    if (sum(dt1, dt2) == 0) frase_redondeo <- "" else
-      if (sum(dt1, dt2) == 1){
-        frase_redondeo <- "<b><u>Advertencia:</u> En este set de datos 
+    dt1 <- valor_p_interno < input_alfa
+    dt2 <- round2(valor_p_interno, input_decimales) < input_alfa
+    if (sum(dt1, dt2) == 2) frase_redondeo <- "" else
+      if (sum(dt1, dt2) == 0) frase_redondeo <- "" else
+        if (sum(dt1, dt2) == 1){
+          frase_redondeo <- "<b><u>Advertencia:</u> En este set de datos 
             le recomendamos que aumente la cantidad de decimales ya que en este 
             caso el redondeo excesivo distorciona la interpretación correcta del test. 
             Aumente la cantidad de decimales hasta que esta advertencia 
             desaparezca.</b>"
-        
-      } 
-  
+          
+        } 
+    
   }
   
   
-
- 
+  
+  
   # #######################################
   # 
   
@@ -7112,14 +7116,16 @@ Test_QC_TestKruskalWallis <- function(input_base = NULL,
   }
   
   # Tabla de comparacion1 -  de medianas
+  # Tabla de comparacion1 -  de medianas
   {
     
     tabla_comparacion1 <- the_test$groups
-    tabla_comparacion1 <- cbind(rownames(tabla_comparacion1), 
-                               medianas_obs_externas, tabla_comparacion1)
-    colnames(tabla_comparacion1) <- c("Niveles", "Medianas", "Media de Ranking", 
-                                     "Grupos Estadísticos")
+    tabla_comparacion1$Medianas  <- medianas_obs_externas[rownames(tabla_comparacion1)]
+    tabla_comparacion1$"Niveles" <- rownames(tabla_comparacion1)
+    tabla_comparacion1 <- tabla_comparacion1[,c(4, 3, 1, 2)]
+    colnames(tabla_comparacion1)[3] <- "Media de Ranking"
     tabla_comparacion1[,3] <- round2(tabla_comparacion1[,3], input_decimales)
+    
     
     # Quitamos la columna 3 que tiene la media del ranking
     tabla_comparacion1 <- tabla_comparacion1[-3]
@@ -7157,7 +7163,8 @@ Test_QC_TestKruskalWallis <- function(input_base = NULL,
         
         valores_p_mod[k] <- "<0.001"
         
-      } else valores_p_mod[k] <- round2(as.numeric(as.character(valores_p_mod[k])), input_decimales)
+        #} else valores_p_mod[k] <- round2(as.numeric(as.character(valores_p_mod[k])), input_decimales)
+      } else valores_p_mod[k] <- round2(as.numeric(as.character(valores_p_mod[k])), 4)
       
       
     }
@@ -7171,11 +7178,11 @@ Test_QC_TestKruskalWallis <- function(input_base = NULL,
         contador <- contador + 1
         
         rejunte_medianas[contador] <- paste0(medianas_obs_externas[k1], " - ", medianas_obs_externas[k2])
-    }
+      }
     }
     tabla_comparacion2[,2] <- rejunte_medianas
     
-   }
+  }
   
   
   # Tabla de comparacion3 
@@ -7260,7 +7267,7 @@ Test_QC_TestKruskalWallis <- function(input_base = NULL,
   SALIDA_ARMADA$frase_juego_hipotesis <- frase_juego_hipotesis
   
   SALIDA_ARMADA$tabla_comparacion1 <- tabla_comparacion1
-
+  
   SALIDA_ARMADA$tabla_comparacion2 <- tabla_comparacion2
   
   SALIDA_ARMADA$tabla_comparacion3 <- tabla_comparacion3

@@ -249,12 +249,12 @@ ui <- shiny::navbarPage(inverse=TRUE,
         "))
                         ),   
                         
-                        title = strong("RMedic 3.2.3"),
+                        title = strong("RMedic 3.2.4"),
                         windowTitle = "RMedic - Medicina y R", 
                         fluid = TRUE, 
                         # header = column(12, ""),
                         footer = column(12,
-                                        br(), br(),
+                                        #, br(), br(),
                                         # Botón de donaciones de PayPal
                                         div( id = "footer",
                                              style = "text-align: center;",
@@ -264,9 +264,9 @@ ui <- shiny::navbarPage(inverse=TRUE,
                                           #tags$img(src = "img03_reina_2025.png", height = "30px"),  # Imagen
                                           
                                         ),
-                                        br(), 
+                                        #br(), 
                                         
-                                        div(style = "text-align: center;", HTML('&copy; RMedic (2016)'))
+                                        div(style = "text-align: center;", HTML('&copy; RMedic (2016-2026)'))
                                         
                         ),
                         id = "nav",
@@ -278,7 +278,12 @@ ui <- shiny::navbarPage(inverse=TRUE,
                         shiny::tabPanel(title = "Herramientas", source("tabs/HerramientasTab.R", encoding = "UTF-8")$value),
                         shiny::tabPanel(title = "Cita", module_opt04_cita_UI("opt04_cita")),
                         shiny::tabPanel(title = "Contacto", module_opt05_contacto_UI("opt05_contacto")),
-                        shiny::tabPanel(title = "Quiénes somos?", module_opt99_who_UI(id = "who99"))#,
+                        shiny::tabPanel(title = "Quiénes somos?", module_opt99_who_UI(id = "who99")),
+                        shiny::tabPanel(title = "Cronología", 
+                                        h3_mod("Última versión"),
+                                        "01-10-2025 - RMedic 3.2.4", br(),
+                                        h3_mod("Versiones Anteriores"),
+                                        "31-09-2025 - RMedic 3.2.3")
                         #shiny::tabPanel(title = "Donar", module_opt06_donar_UI(id = "donar"))
 )
 

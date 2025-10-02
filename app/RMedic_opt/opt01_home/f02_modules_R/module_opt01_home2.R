@@ -18,11 +18,19 @@ module_opt01_home2_UI <- function(id) {
           fluidRow(
             column(3, img(src = "rmediclogo.png", width = "300", height = "300"),
                        br(),
-                       tags$a(fa_i("linkedin"), href = "https://www.linkedin.com/company/r-medic/", class = "social-icon", style="font-size: 4em;"),
+                       tags$a(
+                         fa_i("linkedin"), 
+                         href = "https://www.linkedin.com/company/r-medic/", 
+                         target = "_blank",
+                         class = "social-icon", 
+                         style="font-size: 4em;"),
           ),
                    column(9, br(), br(),
                           div(tags$head(
                             tags$style(HTML("
+                            body, html {
+    overflow-x: hidden !important;  /* Evita scroll horizontal en toda la página */
+  }
       .carousel-container {
         width: 100%;
         overflow: hidden;
